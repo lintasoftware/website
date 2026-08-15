@@ -419,82 +419,88 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 14px;
     height: 100%;
     align-content: center;
   }
 
-  .bento-card {
+  .tech-card {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 18px;
-    padding: 22px 20px;
+    padding: 20px;
     transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
-  .bento-card:hover {
+  .tech-card:hover {
     transform: translateY(-4px);
     background: rgba(255,255,255,0.14);
     border-color: rgba(127,240,255,0.4);
   }
 
-  .bento-card.wide {
+  .tech-card.wide {
     grid-column: span 2;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
   }
 
-  .bento-icon {
-    width: 42px; height: 42px;
-    background: linear-gradient(135deg, rgba(127,240,255,0.35), rgba(0,180,216,0.25));
-    border-radius: 12px;
+  .tech-card-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7ff0ff;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    margin-bottom: 14px;
-    border: 1px solid rgba(255,255,255,0.2);
+    gap: 8px;
   }
 
-  .bento-card .bento-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.3px;
-    margin-bottom: 6px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8ecff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .tech-card-title .tc-icon {
+    font-size: 0.95rem;
   }
 
-  .bento-card.wide .bento-title { font-size: 1.6rem; }
-
-  .bento-card .bento-label {
-    font-size: 0.82rem;
-    opacity: 0.82;
-    line-height: 1.4;
-  }
-
-  .bento-pill-row {
+  .tech-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: 12px;
   }
 
-  .bento-pill {
+  .tech-tag {
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.18);
-    padding: 4px 10px;
+    color: #fff;
+    padding: 5px 11px;
     border-radius: 20px;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 500;
+    transition: all 0.25s ease;
+    cursor: default;
+  }
+
+  .tech-tag:hover {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,180,216,0.35);
+  }
+
+  .tech-feature-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    opacity: 0.92;
+  }
+
+  .tech-feature-row .tc-dot {
+    width: 8px; height: 8px;
+    background: linear-gradient(135deg, #7ff0ff, var(--accent));
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(127,240,255,0.6);
   }
 
   .about-text h3 {
@@ -1250,7 +1256,7 @@
     .about-features { grid-template-columns: 1fr; }
     .about-visual { padding: 24px; min-height: auto; }
     .bento-grid { grid-template-columns: 1fr; }
-    .bento-card.wide { grid-column: span 1; }
+    .tech-card.wide { grid-column: span 1; }
   }
 </style>
 </head>
@@ -1301,27 +1307,64 @@
   <div class="about-grid">
     <div class="about-visual reveal reveal-left">
       <div class="bento-grid">
-        <div class="bento-card">
-          <div class="bento-icon">🧩</div>
-          <div class="bento-title">Full-Stack</div>
-          <div class="bento-label">Web, mobile, cloud &amp; custom software under one roof.</div>
-        </div>
-
-        <div class="bento-card">
-          <div class="bento-icon">⚡</div>
-          <div class="bento-title">Agile</div>
-          <div class="bento-label">Iterative delivery with transparent communication.</div>
-        </div>
-
-        <div class="bento-card wide">
-          <div class="bento-icon">🌏</div>
-          <div class="bento-title">Local + Global</div>
-          <div class="bento-label">Offices in Kochi &amp; Coimbatore, serving clients across India and beyond.</div>
-          <div class="bento-pill-row">
-            <span class="bento-pill">Kerala</span>
-            <span class="bento-pill">Tamil Nadu</span>
-            <span class="bento-pill">Global Delivery</span>
+        <div class="tech-card wide">
+          <div class="tech-card-title"><span class="tc-icon">⚛️</span> Frontend</div>
+          <div class="tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Angular</span>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Tailwind CSS</span>
           </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-title"><span class="tc-icon">⚙️</span> Backend</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">.NET</span>
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">PHP</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-title"><span class="tc-icon">📱</span> Mobile</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Kotlin</span>
+            <span class="tech-tag">Swift</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-title"><span class="tc-icon">☁️</span> Cloud &amp; DevOps</div>
+          <div class="tech-tags">
+            <span class="tech-tag">AWS</span>
+            <span class="tech-tag">Azure</span>
+            <span class="tech-tag">GCP</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Kubernetes</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-title"><span class="tc-icon">🗄️</span> Database</div>
+          <div class="tech-tags">
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Redis</span>
+          </div>
+        </div>
+
+        <div class="tech-card wide">
+          <div class="tech-card-title"><span class="tc-icon">🚀</span> Engineering Practices</div>
+          <div class="tech-feature-row"><span class="tc-dot"></span> Agile / Scrum delivery · CI/CD pipelines · Microservices architecture</div>
+          <div class="tech-feature-row"><span class="tc-dot"></span> REST &amp; GraphQL APIs · Test automation · Code reviews</div>
         </div>
       </div>
     </div>
