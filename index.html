@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lintasoft — IT Solutions & Software Development | Kochi, Kerala</title>
 <meta name="description" content="Lintasoft is a Kochi-based IT company offering custom software development, web & mobile apps, cloud solutions, and IT consulting from Kakkanad, Kerala." />
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+<meta property="og:title" content="Lintasoft — Leading Thoughts | IT Solutions & Software Development" />
+<meta property="og:description" content="Custom software, web & mobile apps, cloud and AI solutions from Kochi, Coimbatore & Delaware." />
+<meta property="og:image" content="assets/logo.jpg" />
 <style>
   :root {
     --primary: #0f4c81;
@@ -75,6 +79,14 @@
     color: var(--primary);
     letter-spacing: -0.5px;
   }
+
+  .logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .logo:hover img { transform: scale(1.05); }
 
   .logo-icon {
     width: 40px; height: 40px;
@@ -1216,13 +1228,18 @@
   }
 
   .footer-logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .footer-logo img {
+    height: 70px;
+    width: auto;
+    background: #fff;
+    padding: 8px 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    display: block;
   }
 
   footer p { font-size: 0.9rem; opacity: 0.7; }
@@ -1281,10 +1298,9 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-  <div class="logo">
-    <div class="logo-icon">L</div>
-    Lintasoft
-  </div>
+  <a href="#home" class="logo">
+    <img src="assets/logo.jpg" alt="Lintasoft — Leading Thoughts" />
+  </a>
   <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" class="nav-link" onclick="closeMenu()">About</a></li>
@@ -1652,10 +1668,9 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="footer-logo">
-    <div class="logo-icon">L</div>
-    Lintasoft
-  </div>
+  <a href="#home" class="footer-logo">
+    <img src="assets/logo.jpg" alt="Lintasoft — Leading Thoughts" />
+  </a>
   <p>Innovative IT Solutions from Kochi, Kerala</p>
   <p style="margin-top:8px; font-size:0.85rem;">
     <strong>Corporate Office (USA):</strong> 254 Chapman Road, Suite 101-B, Newark, Delaware 19702, USA
