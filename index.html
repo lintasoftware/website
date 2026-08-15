@@ -257,14 +257,11 @@
   }
 
   .about-visual {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    border-radius: 20px;
-    padding: 50px;
+    background: linear-gradient(135deg, #0a365c 0%, #0f4c81 45%, #0096c7 100%);
+    border-radius: 24px;
+    padding: 32px;
     color: #fff;
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: 420px;
     box-shadow: var(--shadow-hover);
     position: relative;
     overflow: hidden;
@@ -273,27 +270,100 @@
   .about-visual::before {
     content: '';
     position: absolute;
-    top: -80px; right: -80px;
-    width: 220px; height: 220px;
-    background: rgba(255,255,255,0.1);
+    top: -120px; right: -120px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,180,216,0.45) 0%, transparent 65%);
     border-radius: 50%;
   }
 
-  .about-stat {
-    margin-bottom: 28px;
+  .about-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -80px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(127,240,255,0.25) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+
+  .bento-grid {
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    height: 100%;
   }
-  .about-stat:last-child { margin-bottom: 0; }
-  .about-stat .num {
-    font-size: 2.6rem;
+
+  .bento-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 22px 20px;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bento-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(127,240,255,0.4);
+  }
+
+  .bento-card.wide {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+  }
+
+  .bento-icon {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, rgba(127,240,255,0.35), rgba(0,180,216,0.25));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .bento-card .bento-title {
+    font-size: 1.3rem;
     font-weight: 800;
-    line-height: 1;
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #ffffff 0%, #b8ecff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .about-stat .label {
-    opacity: 0.9;
-    font-size: 0.95rem;
-    margin-top: 6px;
+
+  .bento-card.wide .bento-title { font-size: 1.6rem; }
+
+  .bento-card .bento-label {
+    font-size: 0.82rem;
+    opacity: 0.82;
+    line-height: 1.4;
+  }
+
+  .bento-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .bento-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
   }
 
   .about-text h3 {
@@ -980,6 +1050,9 @@
 
     .form-row { grid-template-columns: 1fr; }
     .about-features { grid-template-columns: 1fr; }
+    .about-visual { padding: 24px; min-height: auto; }
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-card.wide { grid-column: span 1; }
   }
 </style>
 </head>
@@ -1022,21 +1095,35 @@
 
   <div class="about-grid">
     <div class="about-visual">
-      <div class="about-stat">
-        <div class="num">Kochi</div>
-        <div class="label">Headquartered in Kakkanad, the heart of Kerala's IT corridor</div>
-      </div>
-      <div class="about-stat">
-        <div class="num">Full-Stack</div>
-        <div class="label">Web, mobile, cloud, and custom software under one roof</div>
-      </div>
-      <div class="about-stat">
-        <div class="num">Agile</div>
-        <div class="label">Iterative delivery with transparent communication</div>
-      </div>
-      <div class="about-stat">
-        <div class="num">Local + Global</div>
-        <div class="label">Serving clients across India and beyond</div>
+      <div class="bento-grid">
+        <div class="bento-card wide">
+          <div class="bento-icon">📍</div>
+          <div class="bento-title">Kochi HQ</div>
+          <div class="bento-label">Headquartered in Kakkanad — the heart of Kerala's IT corridor, next to Infopark.</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon">🧩</div>
+          <div class="bento-title">Full-Stack</div>
+          <div class="bento-label">Web, mobile, cloud &amp; custom software under one roof.</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon">⚡</div>
+          <div class="bento-title">Agile</div>
+          <div class="bento-label">Iterative delivery with transparent communication.</div>
+        </div>
+
+        <div class="bento-card wide">
+          <div class="bento-icon">🌏</div>
+          <div class="bento-title">Local + Global</div>
+          <div class="bento-label">Offices in Kochi &amp; Coimbatore, serving clients across India and beyond.</div>
+          <div class="bento-pill-row">
+            <span class="bento-pill">Kerala</span>
+            <span class="bento-pill">Tamil Nadu</span>
+            <span class="bento-pill">Global Delivery</span>
+          </div>
+        </div>
       </div>
     </div>
 
