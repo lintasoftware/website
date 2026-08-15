@@ -559,12 +559,42 @@
     box-shadow: var(--shadow);
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid transparent;
-  }
-
-  .service-card {
     position: relative;
     overflow: hidden;
   }
+
+  .service-eyebrow {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-hover);
+    background: rgba(0,180,216,0.08);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .services-cta {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.05rem;
+    color: var(--gray);
+  }
+
+  .services-cta a {
+    color: var(--primary);
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .services-cta a:hover {
+    color: var(--accent-hover);
+    border-color: var(--primary);
+  }
+
   .service-card::before {
     content: '';
     position: absolute;
@@ -1387,83 +1417,93 @@
 <!-- ===== SERVICES ===== -->
 <section id="services">
   <div class="section-header reveal">
-    <span class="section-tag">Our Services</span>
-    <h2>What We Offer</h2>
-    <p>End-to-end IT services tailored to accelerate your business growth and digital journey.</p>
+    <span class="section-tag">What We Offer</span>
+    <h2>Build, scale &amp; modernize — with one partner</h2>
+    <p>From first prototype to production-grade platform, we cover the full software lifecycle so you can move fast without rebuilding later.</p>
   </div>
 
   <div class="services-grid stagger-children">
-    <div class="service-card">
+    <article class="service-card">
       <div class="service-icon">💻</div>
+      <span class="service-eyebrow">ENGINEERING</span>
       <h3>Custom Software Development</h3>
-      <p>We design and build tailored web, mobile, and desktop applications around your exact business workflows — replacing spreadsheets, off-the-shelf tools, and manual processes with software that actually fits how your team works.</p>
+      <p>Web and mobile applications engineered around your workflows — built to scale, secure by default, and ready for production from day one.</p>
       <ul>
-        <li>Web applications & admin dashboards</li>
-        <li>Enterprise workflow automation</li>
-        <li>API development & third-party integration</li>
-        <li>Legacy system modernization</li>
+        <li>Product design &amp; UX architecture</li>
+        <li>Web apps, SPAs &amp; admin portals</li>
+        <li>REST &amp; GraphQL API platforms</li>
+        <li>Third-party &amp; ERP integrations</li>
       </ul>
-    </div>
+    </article>
 
-    <div class="service-card">
+    <article class="service-card">
       <div class="service-icon">☁️</div>
-      <h3>Cloud Solutions & DevOps</h3>
-      <p>We help you move to, build on, and optimize the cloud — with automated infrastructure, reliable deployments, and 24/7 operations on AWS, Microsoft Azure, and Google Cloud Platform.</p>
+      <span class="service-eyebrow">CLOUD NATIVE</span>
+      <h3>Cloud &amp; DevOps</h3>
+      <p>Ship faster and sleep better. We automate infrastructure, deployments, and observability across AWS, Azure, and GCP — so releases become boring.</p>
       <ul>
-        <li>Cloud migration & architecture design</li>
-        <li>CI/CD pipelines & Infrastructure as Code</li>
-        <li>Containerization with Docker & Kubernetes</li>
-        <li>Monitoring, backup & disaster recovery</li>
+        <li>Cloud migration &amp; architecture</li>
+        <li>CI/CD &amp; Infrastructure as Code</li>
+        <li>Kubernetes, Docker &amp; microservices</li>
+        <li>Monitoring, SRE &amp; cost optimization</li>
       </ul>
-    </div>
+    </article>
 
-    <div class="service-card">
+    <article class="service-card">
       <div class="service-icon">🤖</div>
-      <h3>AI & Data Analytics</h3>
-      <p>Turn your data into decisions. We build machine-learning models, predictive analytics, BI dashboards, and generative-AI features that automate work and uncover insights you can act on.</p>
+      <span class="service-eyebrow">INTELLIGENT SYSTEMS</span>
+      <h3>AI &amp; Data Engineering</h3>
+      <p>Turn data into a competitive advantage. We productionize ML models, build analytics pipelines, and ship AI features that users actually use.</p>
       <ul>
-        <li>Predictive & prescriptive analytics</li>
-        <li>Business intelligence dashboards</li>
-        <li>NLP, chatbots & Generative AI integration</li>
-        <li>Data pipelines & data warehouse setup</li>
+        <li>Generative AI &amp; LLM integration</li>
+        <li>Predictive analytics &amp; forecasting</li>
+        <li>Data warehouses &amp; BI dashboards</li>
+        <li>RAG, agents &amp; workflow automation</li>
       </ul>
-    </div>
+    </article>
 
-    <div class="service-card">
+    <article class="service-card">
       <div class="service-icon">🔒</div>
+      <span class="service-eyebrow">TRUST &amp; SAFETY</span>
       <h3>Cybersecurity</h3>
-      <p>Protect your business, customer data, and reputation with end-to-end security services — from identifying weaknesses to continuously monitoring for threats and ensuring compliance.</p>
+      <p>Find the gaps before attackers do. We assess, harden, and monitor your applications and infrastructure so you can ship with confidence.</p>
       <ul>
-        <li>Vulnerability assessments & pen testing</li>
-        <li>Secure code reviews & hardening</li>
-        <li>SIEM, endpoint & threat monitoring</li>
-        <li>ISO 27001, GDPR & compliance support</li>
+        <li>Penetration testing &amp; VAPT</li>
+        <li>Secure code review &amp; SDLC</li>
+        <li>SOC, SIEM &amp; 24×7 monitoring</li>
+        <li>ISO 27001, SOC 2 &amp; GDPR readiness</li>
       </ul>
-    </div>
+    </article>
 
-    <div class="service-card">
+    <article class="service-card">
       <div class="service-icon">📱</div>
+      <span class="service-eyebrow">MOBILE FIRST</span>
       <h3>Mobile App Development</h3>
-      <p>We build high-quality Android and iOS apps — native or cross-platform — with clean UI, smooth performance, and the backend integrations needed to power a complete product.</p>
+      <p>Native-quality iOS and Android apps from a single codebase or in Swift/Kotlin — fast, accessible, and connected to a scalable backend.</p>
       <ul>
-        <li>Native Android (Kotlin) & iOS (Swift)</li>
-        <li>Cross-platform apps with Flutter & React Native</li>
-        <li>App Store & Play Store deployment</li>
-        <li>Push notifications, payments & analytics</li>
+        <li>Flutter &amp; React Native apps</li>
+        <li>Native iOS (Swift) &amp; Android (Kotlin)</li>
+        <li>App Store &amp; Play Store launch</li>
+        <li>Push, payments &amp; analytics built-in</li>
       </ul>
-    </div>
+    </article>
 
-    <div class="service-card">
+    <article class="service-card">
       <div class="service-icon">🏢</div>
-      <h3>IT Consulting</h3>
-      <p>Get independent, practical advice on technology strategy, architecture, and digital transformation. We work as an extension of your team to help you make the right technology decisions and avoid costly mistakes.</p>
+      <span class="service-eyebrow">ADVISORY</span>
+      <h3>IT Consulting &amp; Teams</h3>
+      <p>Senior engineers and architects embedded in your team — or a full product squad that takes ownership from roadmap to release.</p>
       <ul>
-        <li>Technology roadmap & architecture review</li>
-        <li>Digital transformation advisory</li>
-        <li>Tech stack & vendor selection</li>
-        <li>Dedicated teams & staff augmentation</li>
+        <li>Architecture &amp; tech due diligence</li>
+        <li>Digital transformation roadmap</li>
+        <li>Dedicated teams &amp; staff augmentation</li>
+        <li>CTO-as-a-service for startups</li>
       </ul>
-    </div>
+    </article>
+  </div>
+
+  <div class="services-cta reveal">
+    <p>Not sure where to start? <a href="#contact">Book a free 30-minute consultation →</a></p>
   </div>
 </section>
 
