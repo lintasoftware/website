@@ -3,1946 +3,633 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lintasoft — IT Solutions & Software Development | Kochi, Kerala</title>
-<meta name="description" content="Lintasoft is a Kochi-based IT company offering custom software development, web & mobile apps, cloud solutions, and IT consulting from Kakkanad, Kerala." />
+<title>Lintasoft — Leading Thoughts | IT Solutions & Software Development</title>
+<meta name="description" content="Lintasoft is a global IT company offering custom software development, cloud, AI, cybersecurity and mobile solutions from offices in Kochi, Coimbatore and Delaware." />
 <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
-<meta property="og:title" content="Lintasoft — Leading Thoughts | IT Solutions & Software Development" />
-<meta property="og:description" content="Custom software, web & mobile apps, cloud and AI solutions from Kochi, Coimbatore & Delaware." />
+<meta property="og:title" content="Lintasoft — Leading Thoughts" />
+<meta property="og:description" content="Custom software, cloud, AI and mobile solutions from India and the USA." />
 <meta property="og:image" content="assets/logo.jpg" />
 <style>
-  :root {
-    --primary: #0f4c81;
-    --primary-dark: #0a365c;
-    --accent: #00b4d8;
-    --accent-hover: #0096c7;
-    --light: #f4f7fb;
-    --dark: #1a1a2e;
-    --gray: #5a6478;
-    --white: #ffffff;
-    --shadow: 0 4px 20px rgba(15, 76, 129, 0.1);
-    --shadow-hover: 0 8px 30px rgba(15, 76, 129, 0.18);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    color: var(--dark);
-    line-height: 1.6;
-    background: var(--white);
-  }
-
-  a { text-decoration: none; color: inherit; }
-
-  /* ===== NAVBAR ===== */
-  .navbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    z-index: 1000;
-    padding: 0 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 72px;
-    transition: box-shadow 0.3s ease, background 0.3s ease, height 0.3s ease;
-  }
-  .navbar.scrolled {
-    box-shadow: 0 6px 24px rgba(15,76,129,0.12);
-    background: rgba(255,255,255,0.97);
-    height: 66px;
-  }
-
-  /* Scroll progress bar */
-  .scroll-progress {
-    position: fixed;
-    top: 0; left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    z-index: 1001;
-    transition: width 0.1s ease-out;
-    box-shadow: 0 0 10px rgba(0,180,216,0.6);
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary);
-    letter-spacing: -0.5px;
-  }
-
-  .logo img {
-    height: 44px;
-    width: auto;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-  .logo:hover img { transform: scale(1.05); }
-
-  .logo-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 8px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    padding: 8px 18px;
-    border-radius: 8px;
-    font-weight: 500;
-    color: var(--gray);
-    transition: all 0.25s ease;
-    font-size: 0.95rem;
-    cursor: pointer;
-  }
-
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--primary);
-    background: rgba(15, 76, 129, 0.08);
-  }
-
-  .nav-cta {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff !important;
-    padding: 10px 22px !important;
-    border-radius: 8px;
-    font-weight: 600 !important;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .nav-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(15, 76, 129, 0.35);
-    background: linear-gradient(135deg, var(--primary-dark), var(--accent-hover)) !important;
-  }
-
-  .menu-toggle {
-    display: none;
-    font-size: 1.6rem;
-    background: none;
-    border: none;
-    color: var(--primary);
-    cursor: pointer;
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 100px 6% 60px;
-    background: linear-gradient(135deg, #0a365c 0%, #0f4c81 25%, #1a6fa8 55%, #0096c7 80%, #00b4d8 100%);
-    background-size: 300% 300%;
-    animation: gradientShift 14s ease infinite;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-
-  @keyframes gradientShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -50%; right: -10%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -30%; left: -5%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(0,180,216,0.2) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  /* Floating decorative shapes */
-  .floating-shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.18;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .shape-1 {
-    width: 80px; height: 80px;
-    background: #7ff0ff;
-    top: 22%; right: 12%;
-    animation: float 9s ease-in-out infinite;
-  }
-  .shape-2 {
-    width: 50px; height: 50px;
-    background: #fff;
-    top: 65%; right: 22%;
-    animation: float 7s ease-in-out infinite 1.5s;
-  }
-  .shape-3 {
-    width: 30px; height: 30px;
-    background: #00b4d8;
-    top: 35%; right: 30%;
-    animation: float 6s ease-in-out infinite 0.8s;
-  }
-  .shape-4 {
-    width: 110px; height: 110px;
-    border: 2px solid rgba(255,255,255,0.35);
-    background: transparent;
-    bottom: 18%; right: 8%;
-    border-radius: 24px;
-    transform: rotate(25deg);
-    animation: spin 22s linear infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50%      { transform: translateY(-25px) rotate(8deg); }
-  }
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-
-  .hero-content {
-    max-width: 700px;
-    position: relative;
-    z-index: 2;
-    animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-  @keyframes heroFadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    margin-bottom: 24px;
-    backdrop-filter: blur(4px);
-  }
-
-  .hero h1 {
-    font-size: 3.2rem;
-    line-height: 1.15;
-    font-weight: 800;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-  }
-
-  .hero h1 span { color: #7ff0ff; }
-
-  .hero p {
-    font-size: 1.15rem;
-    opacity: 0.92;
-    margin-bottom: 36px;
-    max-width: 560px;
-  }
-
-  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  .btn {
-    padding: 14px 32px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    border: none;
-    display: inline-block;
-  }
-
-  .btn-primary {
-    background: #fff;
-    color: var(--primary);
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -80%;
-    width: 50%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(0,180,216,0.25), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.7s ease;
-  }
-  .btn-primary:hover::after { left: 130%; }
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: #fff;
-    border: 2px solid rgba(255,255,255,0.6);
-  }
-  .btn-outline:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: #fff;
-  }
-
-  /* ===== SECTIONS ===== */
-  section {
-    padding: 90px 6%;
-  }
-
-  /* ===== SCROLL REVEAL ===== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .reveal-left  { transform: translateX(-50px); }
-  .reveal-right { transform: translateX(50px); }
-  .reveal-scale { transform: scale(0.92); }
-  .reveal-left.visible,
-  .reveal-right.visible,
-  .reveal-scale.visible { transform: translate(0) scale(1); }
-
-  /* Stagger children inside grids */
-  .stagger-children > * {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
-  .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
-  .stagger-children.visible > *:nth-child(2) { transition-delay: 0.15s; }
-  .stagger-children.visible > *:nth-child(3) { transition-delay: 0.25s; }
-  .stagger-children.visible > *:nth-child(4) { transition-delay: 0.35s; }
-  .stagger-children.visible > *:nth-child(5) { transition-delay: 0.45s; }
-  .stagger-children.visible > *:nth-child(6) { transition-delay: 0.55s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation: none !important;
-      transition: none !important;
-    }
-    .reveal, .stagger-children > * { opacity: 1 !important; transform: none !important; }
-  }
-
-  .section-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 56px;
-  }
-
-  .section-tag {
-    display: inline-block;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-
-  .section-header h2 {
-    font-size: 2.4rem;
-    color: var(--primary-dark);
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-
-  .section-header p {
-    color: var(--gray);
-    font-size: 1.08rem;
-  }
-
-  /* ===== ABOUT ===== */
-  #about { background: var(--white); }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .about-visual {
-    background: linear-gradient(135deg, #0a365c 0%, #0f4c81 50%, #0096c7 100%);
-    border-radius: 20px;
-    padding: 44px 40px;
-    color: #fff;
-    min-height: 420px;
-    box-shadow: var(--shadow-hover);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .about-visual::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(0,180,216,0.35) 0%, transparent 65%);
-    border-radius: 50%;
-  }
-
-  .about-visual::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -60px;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle, rgba(127,240,255,0.18) 0%, transparent 65%);
-    border-radius: 50%;
-  }
-
-  .about-visual-tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 5px 14px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-    align-self: flex-start;
-  }
-
-  .about-visual h3 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 14px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .about-visual > p.visual-sub {
-    font-size: 0.98rem;
-    opacity: 0.9;
-    line-height: 1.6;
-    margin-bottom: 28px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .visual-strengths {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .strength-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-
-  .strength-icon {
-    width: 42px;
-    height: 42px;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-
-  .strength-item h4 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 3px;
-  }
-
-  .strength-item p {
-    font-size: 0.85rem;
-    opacity: 0.82;
-    line-height: 1.45;
-  }
-
-  .about-text h3 {
-    font-size: 1.8rem;
-    color: var(--primary-dark);
-    margin-bottom: 18px;
-  }
-
-  .about-text p {
-    color: var(--gray);
-    margin-bottom: 16px;
-  }
-
-  .about-features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 28px;
-  }
-
-  .feature-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-    color: var(--dark);
-  }
-
-  .check-icon {
-    width: 24px; height: 24px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    flex-shrink: 0;
-  }
-
-  /* ===== SERVICES ===== */
-  #services { background: var(--light); }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .service-card {
-    background: #fff;
-    padding: 36px 30px;
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid transparent;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-eyebrow {
-    display: inline-block;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: var(--accent-hover);
-    background: rgba(0,180,216,0.08);
-    padding: 4px 10px;
-    border-radius: 20px;
-    margin-bottom: 14px;
-  }
-
-  .services-cta {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 1.05rem;
-    color: var(--gray);
-  }
-
-  .services-cta a {
-    color: var(--primary);
-    font-weight: 700;
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .services-cta a:hover {
-    color: var(--accent-hover);
-    border-color: var(--primary);
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 60%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(0,180,216,0.08), transparent);
-    transition: left 0.7s ease;
-    pointer-events: none;
-  }
-  .service-card:hover::before { left: 130%; }
-  .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
-    border-color: rgba(0,180,216,0.2);
-  }
-  .service-card:hover .service-icon {
-    transform: rotate(-8deg) scale(1.1);
-  }
-
-  .service-icon {
-    width: 60px; height: 60px;
-    background: linear-gradient(135deg, rgba(15,76,129,0.1), rgba(0,180,216,0.15));
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .service-card h3 {
-    font-size: 1.25rem;
-    color: var(--primary-dark);
-    margin-bottom: 12px;
-  }
-
-  .service-card p {
-    color: var(--gray);
-    font-size: 0.95rem;
-  }
-
-  .service-card ul {
-    list-style: none;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid #eef1f6;
-  }
-
-  .service-card ul li {
-    position: relative;
-    padding: 5px 0 5px 22px;
-    font-size: 0.87rem;
-    color: var(--gray);
-  }
-
-  .service-card ul li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    width: 16px;
-    height: 16px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    border-radius: 50%;
-    font-size: 0.6rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* ===== PRODUCTS ===== */
-  #products { background: #fff; }
-
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 28px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .product-card {
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    background: #fff;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-  }
-
-  .product-image {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    color: #fff;
-    position: relative;
-  }
-
-  .product-image.p1 { background: linear-gradient(135deg, #667eea, #764ba2); }
-  .product-image.p2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
-  .product-image.p3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-  .product-image.p4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-  .product-image.p5 { background: linear-gradient(135deg, #fa709a, #fee140); }
-  .product-image.p6 { background: linear-gradient(135deg, #30cfd0, #330867); }
-
-  .product-body {
-    padding: 28px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-badge {
-    display: inline-block;
-    background: rgba(15,76,129,0.08);
-    color: var(--primary);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    align-self: flex-start;
-  }
-
-  .product-card h3 {
-    font-size: 1.25rem;
-    color: var(--primary-dark);
-    margin-bottom: 10px;
-  }
-
-  .product-card p {
-    color: var(--gray);
-    font-size: 0.95rem;
-    margin-bottom: 18px;
-    flex: 1;
-  }
-
-  .product-link {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.92rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s;
-  }
-
-  .product-link:hover { gap: 10px; color: var(--primary); }
-
-  /* ===== CONTACT ===== */
-  #contact { background: var(--light); }
-
-  .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 50px;
-    max-width: 1100px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .contact-info {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: #fff;
-    padding: 50px 40px;
-  }
-
-  .contact-info h3 {
-    font-size: 1.6rem;
-    margin-bottom: 14px;
-  }
-
-  .contact-info > p {
-    opacity: 0.85;
-    margin-bottom: 36px;
-    font-size: 0.95rem;
-  }
-
-  .contact-item {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 26px;
-    align-items: flex-start;
-  }
-
-  .contact-item-icon {
-    width: 44px; height: 44px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
-
-  .contact-item h4 {
-    font-size: 0.95rem;
-    margin-bottom: 4px;
-    opacity: 0.9;
-  }
-
-  .contact-item p {
-    font-size: 0.95rem;
-    opacity: 0.8;
-  }
-
-  .social-links {
-    display: flex;
-    gap: 12px;
-    margin-top: 36px;
-  }
-
-  .social-links a {
-    width: 40px; height: 40px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-    font-size: 1rem;
-  }
-
-  .social-links a:hover {
-    background: var(--accent);
-  }
-
-  .contact-form {
-    padding: 50px 40px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-bottom: 18px;
-  }
-
-  .form-group { margin-bottom: 18px; }
-
-  .form-group label {
-    display: block;
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--dark);
-    margin-bottom: 8px;
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid #e1e6ef;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-family: inherit;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: #fafbfd;
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0,180,216,0.12);
-    background: #fff;
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  .btn-submit {
-    width: 100%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    padding: 14px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(15,76,129,0.3);
-  }
-
-  .form-success {
-    display: none;
-    background: #d4edda;
-    color: #155724;
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin-bottom: 18px;
-    font-weight: 500;
-  }
-
-  /* ===== MAP ===== */
-  .map-wrapper {
-    max-width: 1100px;
-    margin: 40px auto 0;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    height: 380px;
-  }
-
-  .map-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-  }
-
-  /* ===== CHATBOT ===== */
-  .chatbot-toggle {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    border: none;
-    font-size: 1.7rem;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(15,76,129,0.4);
-    z-index: 9998;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .chatbot-toggle::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: rgba(0,180,216,0.5);
-    animation: pulseRing 2.4s ease-out infinite;
-    z-index: -1;
-  }
-  @keyframes pulseRing {
-    0%   { transform: scale(1); opacity: 0.7; }
-    100% { transform: scale(1.7); opacity: 0; }
-  }
-  .chatbot-toggle:hover { transform: scale(1.08); }
-
-  /* Back to top button */
-  .back-to-top {
-    position: fixed;
-    bottom: 28px;
-    left: 28px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #fff;
-    color: var(--primary);
-    border: 1.5px solid rgba(15,76,129,0.15);
-    box-shadow: 0 6px 18px rgba(15,76,129,0.18);
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 9997;
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-  }
-  .back-to-top:hover {
-    background: var(--primary);
-    color: #fff;
-    transform: translateY(-3px);
-  }
-  .chatbot-toggle .toggle-icon { transition: opacity 0.2s; }
-  .chatbot-toggle.active .toggle-icon { opacity: 0; }
-  .chatbot-toggle.active::after {
-    content: '✕';
-    position: absolute;
-    font-size: 1.5rem;
-    opacity: 1;
-  }
-
-  .chatbot-badge {
-    position: absolute;
-    top: -4px; right: -4px;
-    background: #ff4757;
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #fff;
-  }
-
-  .chatbot-window {
-    position: fixed;
-    bottom: 102px;
-    right: 28px;
-    width: 370px;
-    max-width: calc(100vw - 40px);
-    height: 540px;
-    max-height: calc(100vh - 140px);
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 18px 60px rgba(15,76,129,0.28);
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transform: scale(0.9) translateY(20px);
-    opacity: 0;
-    pointer-events: none;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-  }
-  .chatbot-window.open {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .chatbot-header {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: #fff;
-    padding: 16px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .chatbot-avatar {
-    width: 42px; height: 42px;
-    background: linear-gradient(135deg, var(--accent), #7ff0ff);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-  .chatbot-header-info h4 {
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  .chatbot-status {
-    font-size: 0.78rem;
-    opacity: 0.85;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 2px;
-  }
-  .status-dot {
-    width: 8px; height: 8px;
-    background: #2ed573;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 0 2px rgba(46,213,115,0.3);
-  }
-
-  .chatbot-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 18px;
-    background: #f6f9fc;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .chatbot-messages::-webkit-scrollbar { width: 6px; }
-  .chatbot-messages::-webkit-scrollbar-thumb { background: #c5d0de; border-radius: 3px; }
-
-  .msg {
-    max-width: 82%;
-    padding: 11px 15px;
-    border-radius: 16px;
-    font-size: 0.9rem;
-    line-height: 1.45;
-    word-wrap: break-word;
-    animation: msgIn 0.25s ease;
-  }
-  @keyframes msgIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .msg.bot {
-    background: #fff;
-    color: var(--dark);
-    border-bottom-left-radius: 4px;
-    align-self: flex-start;
-    box-shadow: 0 2px 6px rgba(15,76,129,0.08);
-  }
-  .msg.user {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    border-bottom-right-radius: 4px;
-    align-self: flex-end;
-  }
-  .msg a {
-    color: var(--accent-hover);
-    text-decoration: underline;
-    word-break: break-all;
-  }
-  .msg.user a { color: #fff; }
-
-  .quick-replies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 0 18px 10px;
-    background: #f6f9fc;
-  }
-  .quick-reply {
-    background: #fff;
-    border: 1.5px solid rgba(15,76,129,0.2);
-    color: var(--primary);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-  .quick-reply:hover {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
-  }
-
-  .typing {
-    display: inline-flex;
-    gap: 4px;
-    padding: 14px 16px;
-  }
-  .typing span {
-    width: 8px; height: 8px;
-    background: #9aa9bd;
-    border-radius: 50%;
-    animation: typing 1.2s infinite ease-in-out;
-  }
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typing {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-    30% { transform: translateY(-6px); opacity: 1; }
-  }
-
-  .chatbot-input {
-    display: flex;
-    gap: 8px;
-    padding: 12px;
-    background: #fff;
-    border-top: 1px solid #eef1f6;
-  }
-  .chatbot-input input {
-    flex: 1;
-    padding: 11px 15px;
-    border: 1.5px solid #e1e6ef;
-    border-radius: 24px;
-    font-size: 0.9rem;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .chatbot-input input:focus { border-color: var(--accent); }
-  .chatbot-send {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s;
-    flex-shrink: 0;
-  }
-  .chatbot-send:hover { transform: scale(1.08); }
-
-  @media (max-width: 480px) {
-    .chatbot-window {
-      right: 12px;
-      left: 12px;
-      bottom: 90px;
-      width: auto;
-      height: 70vh;
-    }
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    background: var(--dark);
-    color: #c5cad6;
-    padding: 50px 6% 24px;
-    text-align: center;
-  }
-
-  .footer-logo {
-    margin-bottom: 16px;
-    display: inline-block;
-  }
-
-  .footer-logo img {
-    height: 70px;
-    width: auto;
-    background: #fff;
-    padding: 8px 14px;
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    display: block;
-  }
-
-  footer p { font-size: 0.9rem; opacity: 0.7; }
-
-  .footer-bottom {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.85rem;
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    .about-grid,
-    .contact-wrapper { grid-template-columns: 1fr; }
-
-    .contact-info { padding: 40px 30px; }
-    .contact-form { padding: 40px 30px; }
-  }
-
-  @media (max-width: 768px) {
-    .menu-toggle { display: block; }
-
-    .nav-links {
-      position: fixed;
-      top: 72px; left: 0; right: 0;
-      background: #fff;
-      flex-direction: column;
-      padding: 20px;
-      gap: 4px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-      transform: translateY(-150%);
-      transition: transform 0.3s ease;
-    }
-
-    .nav-links.open { transform: translateY(0); }
-    .nav-links a { padding: 14px 18px; }
-
-    .hero h1 { font-size: 2.2rem; }
-    .hero p { font-size: 1rem; }
-    .hero { padding: 100px 6% 60px; }
-
-    section { padding: 70px 6%; }
-    .section-header h2 { font-size: 1.8rem; }
-
-    .form-row { grid-template-columns: 1fr; }
-    .about-features { grid-template-columns: 1fr; }
-    .about-visual { padding: 32px 28px; min-height: auto; }
-  }
+:root{
+  --bg:#ffffff;--bg-soft:#f7f8fa;--bg-dark:#0a0e1a;--bg-dark-2:#0f1524;
+  --border:#e6e9ef;--border-strong:#d1d6df;
+  --text:#0a0e1a;--text-muted:#5b6577;--text-soft:#8a93a6;
+  --primary:#2563eb;--primary-dark:#1d4ed8;--accent:#06b6d4;--accent-2:#8b5cf6;--accent-3:#ec4899;
+  --gradient:linear-gradient(135deg,#2563eb 0%,#06b6d4 50%,#8b5cf6 100%);
+  --shadow-sm:0 1px 2px rgba(16,24,40,.05);
+  --shadow:0 4px 16px rgba(16,24,40,.06);
+  --shadow-lg:0 20px 50px -12px rgba(16,24,40,.12);
+  --radius-sm:10px;--radius:16px;--radius-lg:24px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+::selection{background:rgba(37,99,235,.2);color:var(--primary-dark)}
+
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--gradient);z-index:2000;transition:width .1s linear}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 6%;display:flex;align-items:center;justify-content:space-between;transition:all .3s ease;border-bottom:1px solid transparent}
+.navbar.scrolled{background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom-color:var(--border);padding:10px 6%}
+.logo img{height:42px;width:auto;display:block;transition:transform .3s ease}
+.logo:hover img{transform:scale(1.04)}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;background:rgba(255,255,255,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border);padding:6px;border-radius:100px}
+.nav-links a{padding:8px 18px;border-radius:100px;font-size:.9rem;font-weight:500;color:var(--text-muted);transition:all .2s ease;white-space:nowrap}
+.nav-links a:hover{color:var(--text);background:rgba(0,0,0,.04)}
+.nav-links a.active{color:var(--text);background:#fff;box-shadow:var(--shadow-sm)}
+.nav-cta{background:var(--text)!important;color:#fff!important;padding:10px 20px!important;font-weight:600!important;transition:transform .2s,box-shadow .2s!important}
+.nav-cta:hover{background:#000!important;transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.2)!important}
+.menu-toggle{display:none;width:42px;height:42px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;font-size:1.3rem;color:var(--text)}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 6% 100px;background:var(--bg-dark);color:#fff;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 40%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 40%,transparent 100%)}
+.hero::after{content:'';position:absolute;top:10%;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.25) 0%,rgba(139,92,246,.12) 35%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:880px;margin:0 auto;text-align:center;animation:fadeUp 1s cubic-bezier(.22,1,.36,1) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 16px 6px 6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;font-size:.85rem;font-weight:500;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero-pill .pulse-dot{width:8px;height:8px;background:#22d3ee;border-radius:50%;box-shadow:0 0 0 4px rgba(34,211,238,.2);animation:pulse 2s infinite}
+.hero-pill .pill-tag{background:var(--gradient);color:#fff;padding:3px 10px;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(34,211,238,.2)}50%{box-shadow:0 0 0 8px rgba(34,211,238,0)}}
+.hero h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.05;font-weight:800;letter-spacing:-.03em;margin-bottom:24px}
+.gradient-text{background:linear-gradient(135deg,#60a5fa 0%,#22d3ee 40%,#c084fc 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hero p{font-size:clamp(1rem,1.6vw,1.2rem);color:rgba(255,255,255,.7);max-width:620px;margin:0 auto 40px;line-height:1.6}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:100px;font-size:.98rem;font-weight:600;border:none;cursor:pointer;transition:all .25s ease;white-space:nowrap}
+.btn-primary{background:#fff;color:var(--text);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+.hero-trust{margin-top:70px;text-align:center;position:relative;z-index:2}
+.hero-trust-label{font-size:.78rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:24px}
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;gap:60px;width:max-content;animation:marquee 30s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{color:rgba(255,255,255,.55);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+section{padding:110px 6%;position:relative}
+.container{max-width:1200px;margin:0 auto}
+.section-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--primary);font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:var(--gradient);border-radius:2px}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:18px}
+.section-sub{font-size:1.1rem;color:var(--text-muted);max-width:620px;line-height:1.6}
+.section-header{margin-bottom:60px;max-width:780px}
+.section-header.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-header.center .section-eyebrow{justify-content:center}
+.section-header.center .section-sub{margin-left:auto;margin-right:auto}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{transform:translateX(-40px)}.reveal-right{transform:translateX(40px)}
+.reveal-left.visible,.reveal-right.visible{transform:translateX(0)}
+.stagger>*{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:.05s}.stagger.visible>*:nth-child(2){transition-delay:.12s}.stagger.visible>*:nth-child(3){transition-delay:.19s}.stagger.visible>*:nth-child(4){transition-delay:.26s}.stagger.visible>*:nth-child(5){transition-delay:.33s}.stagger.visible>*:nth-child(6){transition-delay:.4s}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal,.stagger>*{opacity:1!important;transform:none!important}}
+
+#about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+.about-text p{color:var(--text-muted);margin-bottom:18px;font-size:1.05rem}
+.about-text p strong{color:var(--text);font-weight:600}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.pillar{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.9rem;font-weight:600;color:var(--text);transition:all .25s ease}
+.pillar:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:var(--shadow)}
+.pillar .pillar-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.1);color:var(--primary);font-size:1rem;flex-shrink:0}
+
+.about-card{position:relative;background:linear-gradient(145deg,#0f1524 0%,#1a2340 100%);color:#fff;border-radius:var(--radius-lg);padding:44px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(37,99,235,.3),transparent 70%);border-radius:50%}
+.about-card-badge{display:inline-block;padding:5px 12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px;position:relative}
+.about-card h3{font-size:1.6rem;font-weight:800;line-height:1.25;letter-spacing:-.02em;margin-bottom:14px;position:relative}
+.about-card p{color:rgba(255,255,255,.75);margin-bottom:28px;font-size:.98rem;position:relative}
+.strength-list{list-style:none;display:flex;flex-direction:column;gap:14px;position:relative}
+.strength-list li{display:flex;gap:14px;align-items:flex-start}
+.strength-list .s-icon{width:38px;height:38px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.strength-list h4{font-size:.98rem;font-weight:700;margin-bottom:2px}
+.strength-list p{font-size:.85rem;color:rgba(255,255,255,.65);margin:0}
+
+#services{background:var(--bg-soft)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;transition:all .3s cubic-bezier(.22,1,.36,1);overflow:hidden}
+.service-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius);padding:1px;background:var(--gradient);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s ease;pointer-events:none}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.service-card:hover::after{opacity:1}
+.service-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(6,182,212,.12));border:1px solid rgba(37,99,235,.1)}
+.service-card:nth-child(2) .service-icon{background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(236,72,153,.1));border-color:rgba(139,92,246,.15)}
+.service-card:nth-child(3) .service-icon{background:linear-gradient(135deg,rgba(6,182,212,.1),rgba(34,197,94,.12));border-color:rgba(6,182,212,.15)}
+.service-card:nth-child(4) .service-icon{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(245,158,11,.12));border-color:rgba(239,68,68,.15)}
+.service-card:nth-child(5) .service-icon{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(6,182,212,.12));border-color:rgba(34,197,94,.15)}
+.service-card:nth-child(6) .service-icon{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(236,72,153,.1));border-color:rgba(245,158,11,.15)}
+.service-eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--primary);margin-bottom:10px}
+.service-card h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em;color:var(--text);margin-bottom:10px}
+.service-card p{color:var(--text-muted);font-size:.93rem;line-height:1.6;margin-bottom:18px}
+.service-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;padding-top:18px;border-top:1px solid var(--border)}
+.service-card ul li{position:relative;padding-left:24px;font-size:.85rem;color:var(--text-muted)}
+.service-card ul li::before{content:'';position:absolute;left:0;top:8px;width:14px;height:14px;background:var(--gradient);border-radius:50%;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='white' d='M6.5 11.5L3 8l1-1 2.5 2.5L12 4l1 1z'/%3E%3C/svg%3E") center/10px no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='white' d='M6.5 11.5L3 8l1-1 2.5 2.5L12 4l1 1z'/%3E%3C/svg%3E") center/10px no-repeat}
+.services-cta{text-align:center;margin-top:50px;font-size:1.05rem;color:var(--text-muted)}
+.services-cta a{color:var(--primary);font-weight:700;border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .2s}
+.services-cta a:hover{border-color:var(--primary)}
+
+#products{background:var(--bg)}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.product-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;transition:all .3s ease;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+.product-emoji{font-size:2rem;margin-bottom:18px;display:inline-flex;width:56px;height:56px;align-items:center;justify-content:center;border-radius:14px;background:var(--bg-soft)}
+.product-badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+.product-card h3{font-size:1.18rem;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+.product-card p{color:var(--text-muted);font-size:.93rem;margin-bottom:20px;flex-grow:1}
+.product-link{color:var(--text);font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:6px;transition:gap .2s,color .2s}
+.product-link:hover{color:var(--primary);gap:10px}
+
+#contact{background:var(--bg-soft)}
+.contact-wrapper{display:grid;grid-template-columns:1fr 1.1fr;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+.contact-info{background:var(--bg-dark);color:#fff;padding:50px 40px;position:relative;overflow:hidden}
+.contact-info::before{content:'';position:absolute;top:-40%;right:-30%;width:300px;height:300px;background:radial-gradient(circle,rgba(37,99,235,.3),transparent 70%);border-radius:50%}
+.contact-info h3{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px;position:relative}
+.contact-info>p{color:rgba(255,255,255,.7);margin-bottom:36px;position:relative;font-size:.95rem}
+.contact-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:24px;position:relative}
+.contact-item-icon{width:42px;height:42px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.contact-item h4{font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px}
+.contact-item p{font-size:.93rem;color:rgba(255,255,255,.9);line-height:1.5}
+.social-links{display:flex;gap:10px;margin-top:32px;position:relative}
+.social-links a{width:38px;height:38px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#fff;transition:all .2s}
+.social-links a:hover{background:var(--primary);border-color:var(--primary);transform:translateY(-2px)}
+.contact-form{padding:50px 40px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:7px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 14px;background:var(--bg-soft);border:1.5px solid transparent;border-radius:10px;font-size:.95rem;font-family:inherit;color:var(--text);transition:all .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;background:#fff;border-color:var(--primary);box-shadow:0 0 0 4px rgba(37,99,235,.1)}
+.form-group textarea{resize:vertical;min-height:120px}
+.btn-submit{width:100%;background:var(--text);color:#fff;padding:14px;border-radius:12px;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all .25s ease;margin-top:4px}
+.btn-submit:hover{background:#000;transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.form-success{display:none;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:13px 16px;border-radius:10px;margin-bottom:18px;font-weight:500;font-size:.92rem}
+.map-wrapper{margin-top:30px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);height:380px}
+.map-wrapper iframe{width:100%;height:100%;border:0;display:block}
+
+footer{background:var(--bg-dark);color:rgba(255,255,255,.7);padding:60px 6% 30px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand img{height:52px;background:#fff;padding:6px 12px;border-radius:8px;margin-bottom:16px}
+.footer-brand p{font-size:.92rem;color:rgba(255,255,255,.6);max-width:320px;line-height:1.6}
+.footer-col h4{color:#fff;font-size:.82rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{color:rgba(255,255,255,.6);font-size:.92rem;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.85rem;color:rgba(255,255,255,.45)}
+.footer-offices{max-width:1200px;margin:0 auto;padding:0 0 24px;font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.7}
+.footer-offices strong{color:rgba(255,255,255,.85);font-weight:600;margin-right:6px}
+
+.back-to-top{position:fixed;bottom:28px;left:28px;width:46px;height:46px;background:#fff;color:var(--text);border:1px solid var(--border);border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s ease;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.back-to-top:hover{background:var(--text);color:#fff;border-color:var(--text);transform:translateY(-3px)}
+
+.chatbot-toggle{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:var(--gradient);color:#fff;border:none;font-size:1.6rem;cursor:pointer;box-shadow:0 10px 30px rgba(37,99,235,.4);z-index:998;display:flex;align-items:center;justify-content:center;transition:transform .25s ease}
+.chatbot-toggle::before{content:'';position:absolute;inset:0;border-radius:50%;background:rgba(37,99,235,.5);animation:pulseRing 2.4s ease-out infinite;z-index:-1}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+.chatbot-toggle:hover{transform:scale(1.08)}
+.chatbot-toggle .toggle-icon{transition:opacity .2s}
+.chatbot-toggle.active .toggle-icon{opacity:0}
+.chatbot-toggle.active::after{content:'\2715';position:absolute;font-size:1.4rem}
+.chatbot-badge{position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:.7rem;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.chatbot-window{position:fixed;bottom:96px;right:24px;width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 130px);background:#fff;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.25);z-index:999;display:flex;flex-direction:column;overflow:hidden;transform:scale(.9) translateY(20px);opacity:0;pointer-events:none;transform-origin:bottom right;transition:transform .25s ease,opacity .25s ease}
+.chatbot-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.chatbot-header{background:var(--bg-dark);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px}
+.chatbot-avatar{width:42px;height:42px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.chatbot-header h4{font-size:1rem;font-weight:700}
+.chatbot-status{font-size:.78rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:6px;margin-top:2px}
+.status-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 0 3px rgba(34,197,94,.25)}
+.chatbot-messages{flex:1;overflow-y:auto;padding:18px;background:#f7f8fa;display:flex;flex-direction:column;gap:12px}
+.chatbot-messages::-webkit-scrollbar{width:6px}
+.chatbot-messages::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
+.msg{max-width:82%;padding:11px 15px;border-radius:16px;font-size:.9rem;line-height:1.45;word-wrap:break-word;animation:msgIn .25s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{background:#fff;color:var(--text);border-bottom-left-radius:4px;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.msg.user{background:var(--gradient);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.msg a{color:var(--primary);text-decoration:underline;word-break:break-all}
+.msg.user a{color:#fff}
+.quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 10px;background:#f7f8fa}
+.quick-reply{background:#fff;border:1.5px solid var(--border);color:var(--text);padding:6px 12px;border-radius:100px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s}
+.quick-reply:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.typing{display:inline-flex;gap:4px;padding:14px 16px}
+.typing span{width:8px;height:8px;background:#9ca3af;border-radius:50%;animation:typing 1.2s infinite ease-in-out}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-6px);opacity:1}}
+.chatbot-input{display:flex;gap:8px;padding:12px;background:#fff;border-top:1px solid var(--border)}
+.chatbot-input input{flex:1;padding:11px 16px;border:1.5px solid var(--border);border-radius:100px;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s}
+.chatbot-input input:focus{border-color:var(--primary)}
+.chatbot-send{width:42px;height:42px;border-radius:50%;background:var(--gradient);color:#fff;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:transform .2s;flex-shrink:0}
+.chatbot-send:hover{transform:scale(1.08)}
+
+@media (max-width:1024px){.services-grid,.products-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:30px}}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:50px}.contact-wrapper{grid-template-columns:1fr}}
+@media (max-width:768px){
+  section{padding:80px 5%}
+  .menu-toggle{display:flex;align-items:center;justify-content:center}
+  .nav-links{position:fixed;top:70px;left:16px;right:16px;flex-direction:column;background:#fff;padding:12px;border-radius:16px;box-shadow:var(--shadow-lg);transform:translateY(-20px);opacity:0;pointer-events:none;transition:all .3s ease;border-radius:16px}
+  .nav-links.open{transform:translateY(0);opacity:1;pointer-events:all}
+  .nav-links a{width:100%;text-align:center;padding:12px;border-radius:10px}
+  .nav-cta{margin-top:6px}
+  .services-grid,.products-grid{grid-template-columns:1fr}
+  .about-pillars{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .hero{padding:120px 5% 80px}
+  .about-card,.contact-info,.contact-form{padding:32px 26px}
+  .chatbot-window{right:12px;left:12px;bottom:90px;width:auto;height:70vh}
+}
 </style>
 </head>
 <body>
-
-<!-- ===== SCROLL PROGRESS ===== -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
-  <a href="#home" class="logo">
-    <img src="assets/logo.jpg" alt="Lintasoft — Leading Thoughts" />
-  </a>
-  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+<nav class="navbar" id="navbar">
+  <a href="#home" class="logo"><img src="assets/logo.jpg" alt="Lintasoft — Leading Thoughts" /></a>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" class="nav-link" onclick="closeMenu()">About</a></li>
     <li><a href="#services" class="nav-link" onclick="closeMenu()">Services</a></li>
-    <li><a href="#products" class="nav-link" onclick="closeMenu()">Products</a></li>
+    <li><a href="#products" class="nav-link" onclick="closeMenu()">Solutions</a></li>
     <li><a href="#contact" class="nav-link nav-cta" onclick="closeMenu()">Contact Us</a></li>
   </ul>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero" id="home">
-  <div class="floating-shape shape-1"></div>
-  <div class="floating-shape shape-2"></div>
-  <div class="floating-shape shape-3"></div>
-  <div class="floating-shape shape-4"></div>
   <div class="hero-content">
-    <h1>Innovative IT Solutions</h1>
-    <p>Lintasoft is a software and IT services company with offices in Kakkanad (Kochi) and Coimbatore. We design and build custom software, web and mobile applications, and cloud solutions that help businesses modernize, streamline operations, and grow.</p>
-    <div class="hero-buttons">
-      <a href="#services" class="btn btn-primary">Explore Services</a>
-      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    <div class="hero-pill">
+      <span class="pill-tag">New</span>
+      <span class="pulse-dot"></span>
+      AI &amp; Cloud Solutions — now shipping
+    </div>
+    <h1>We build software that <span class="gradient-text">moves your business forward</span></h1>
+    <p>Lintasoft designs and engineers custom software, cloud platforms, AI systems and mobile products for ambitious teams across India and the United States.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Start a project &rarr;</a>
+      <a href="#services" class="btn btn-ghost">Explore services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-label">Technologies we work with</div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <span class="marquee-item">React</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Node.js</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Python</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Flutter</span><span class="marquee-item">·</span>
+          <span class="marquee-item">AWS</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Azure</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Kubernetes</span><span class="marquee-item">·</span>
+          <span class="marquee-item">PostgreSQL</span><span class="marquee-item">·</span>
+          <span class="marquee-item">TypeScript</span><span class="marquee-item">·</span>
+          <span class="marquee-item">.NET</span><span class="marquee-item">·</span>
+          <span class="marquee-item">React</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Node.js</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Python</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Flutter</span><span class="marquee-item">·</span>
+          <span class="marquee-item">AWS</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Azure</span><span class="marquee-item">·</span>
+          <span class="marquee-item">Kubernetes</span><span class="marquee-item">·</span>
+          <span class="marquee-item">PostgreSQL</span><span class="marquee-item">·</span>
+          <span class="marquee-item">TypeScript</span><span class="marquee-item">·</span>
+          <span class="marquee-item">.NET</span><span class="marquee-item">·</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
 <section id="about">
-  <div class="section-header reveal">
-    <span class="section-tag">About Us</span>
-    <h2>Who We Are</h2>
-    <p>A passionate team of engineers, designers, and strategists building tomorrow's technology today.</p>
-  </div>
-
-  <div class="about-grid">
-    <div class="about-visual reveal reveal-left">
-      <span class="about-visual-tag">Why Lintasoft</span>
-      <h3>Engineering that delivers business outcomes</h3>
-      <p class="visual-sub">We combine design thinking, modern engineering, and disciplined delivery to build software that performs — and lasts.</p>
-
-      <div class="visual-strengths">
-        <div class="strength-item">
-          <div class="strength-icon">🧩</div>
-          <div>
-            <h4>Full-Stack Capability</h4>
-            <p>Web, mobile, cloud and APIs — delivered by one accountable team.</p>
-          </div>
-        </div>
-        <div class="strength-item">
-          <div class="strength-icon">⚡</div>
-          <div>
-            <h4>Agile Delivery</h4>
-            <p>Two-week sprints, working demos, and complete transparency.</p>
-          </div>
-        </div>
-        <div class="strength-item">
-          <div class="strength-icon">🔒</div>
-          <div>
-            <h4>Security-First</h4>
-            <p>Secure SDLC, testing, and compliance baked into every release.</p>
-          </div>
-        </div>
+  <div class="container about-grid">
+    <div class="about-text reveal reveal-left">
+      <div class="section-eyebrow">About Lintasoft</div>
+      <h2 class="section-title">Engineering teams that care about outcomes, not just output.</h2>
+      <p>Lintasoft is a software and IT services company with offices in <strong>Newark, Delaware (USA)</strong>, <strong>Kakkanad, Kochi</strong>, and <strong>Coimbatore</strong>. We partner with startups, SMEs and enterprises to turn ideas into production-grade software.</p>
+      <p>From first prototype to global launch, our team combines design thinking, modern engineering and disciplined delivery to build systems that perform — and last.</p>
+      <div class="about-pillars">
+        <div class="pillar"><span class="pillar-icon">&#128187;</span> Custom Software</div>
+        <div class="pillar"><span class="pillar-icon">&#128241;</span> Web &amp; Mobile</div>
+        <div class="pillar"><span class="pillar-icon">&#9729;</span> Cloud &amp; DevOps</div>
+        <div class="pillar"><span class="pillar-icon">&#127970;</span> IT Consulting</div>
       </div>
     </div>
-
-    <div class="about-text reveal reveal-right">
-      <h3>Your Technology Partner from South India</h3>
-      <p>Lintasoft is an IT solutions company with a corporate office in Newark, Delaware (USA), a registered office in Kakkanad, Kochi — home to Infopark and one of South India's fastest-growing technology ecosystems — and a branch office at Hanudev Infotech Park in Coimbatore, Tamil Nadu. We work with startups, SMEs, and enterprises across the globe to turn ideas into reliable software products.</p>
-      <p>From custom web and mobile applications to cloud infrastructure and IT consulting, our team combines modern engineering practices with a practical, business-first approach. We focus on delivering solutions that are scalable, maintainable, and genuinely useful.</p>
-
-      <div class="about-features">
-        <div class="feature-item"><span class="check-icon">✓</span> Custom Software Development</div>
-        <div class="feature-item"><span class="check-icon">✓</span> Web & Mobile Apps</div>
-        <div class="feature-item"><span class="check-icon">✓</span> Cloud & DevOps</div>
-        <div class="feature-item"><span class="check-icon">✓</span> IT Consulting</div>
-      </div>
+    <div class="about-card reveal reveal-right">
+      <span class="about-card-badge">Why Lintasoft</span>
+      <h3>Engineering that delivers business outcomes.</h3>
+      <p>We combine design, engineering and disciplined delivery to build software that performs — and lasts.</p>
+      <ul class="strength-list">
+        <li><span class="s-icon">&#129513;</span><div><h4>Full-stack capability</h4><p>Web, mobile, cloud and APIs delivered by one accountable team.</p></div></li>
+        <li><span class="s-icon">&#9889;</span><div><h4>Agile delivery</h4><p>Two-week sprints, working demos and complete transparency.</p></div></li>
+        <li><span class="s-icon">&#128274;</span><div><h4>Security-first</h4><p>Secure SDLC, testing and compliance baked into every release.</p></div></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ===== SERVICES ===== -->
 <section id="services">
-  <div class="section-header reveal">
-    <span class="section-tag">What We Offer</span>
-    <h2>Build, scale &amp; modernize — with one partner</h2>
-    <p>From first prototype to production-grade platform, we cover the full software lifecycle so you can move fast without rebuilding later.</p>
-  </div>
-
-  <div class="services-grid stagger-children">
-    <article class="service-card">
-      <div class="service-icon">💻</div>
-      <span class="service-eyebrow">ENGINEERING</span>
-      <h3>Custom Software Development</h3>
-      <p>Web and mobile applications engineered around your workflows — built to scale, secure by default, and ready for production from day one.</p>
-      <ul>
-        <li>Product design &amp; UX architecture</li>
-        <li>Web apps, SPAs &amp; admin portals</li>
-        <li>REST &amp; GraphQL API platforms</li>
-        <li>Third-party &amp; ERP integrations</li>
-      </ul>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">☁️</div>
-      <span class="service-eyebrow">CLOUD NATIVE</span>
-      <h3>Cloud &amp; DevOps</h3>
-      <p>Ship faster and sleep better. We automate infrastructure, deployments, and observability across AWS, Azure, and GCP — so releases become boring.</p>
-      <ul>
-        <li>Cloud migration &amp; architecture</li>
-        <li>CI/CD &amp; Infrastructure as Code</li>
-        <li>Kubernetes, Docker &amp; microservices</li>
-        <li>Monitoring, SRE &amp; cost optimization</li>
-      </ul>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">🤖</div>
-      <span class="service-eyebrow">INTELLIGENT SYSTEMS</span>
-      <h3>AI &amp; Data Engineering</h3>
-      <p>Turn data into a competitive advantage. We productionize ML models, build analytics pipelines, and ship AI features that users actually use.</p>
-      <ul>
-        <li>Generative AI &amp; LLM integration</li>
-        <li>Predictive analytics &amp; forecasting</li>
-        <li>Data warehouses &amp; BI dashboards</li>
-        <li>RAG, agents &amp; workflow automation</li>
-      </ul>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">🔒</div>
-      <span class="service-eyebrow">TRUST &amp; SAFETY</span>
-      <h3>Cybersecurity</h3>
-      <p>Find the gaps before attackers do. We assess, harden, and monitor your applications and infrastructure so you can ship with confidence.</p>
-      <ul>
-        <li>Penetration testing &amp; VAPT</li>
-        <li>Secure code review &amp; SDLC</li>
-        <li>SOC, SIEM &amp; 24×7 monitoring</li>
-        <li>ISO 27001, SOC 2 &amp; GDPR readiness</li>
-      </ul>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">📱</div>
-      <span class="service-eyebrow">MOBILE FIRST</span>
-      <h3>Mobile App Development</h3>
-      <p>Native-quality iOS and Android apps from a single codebase or in Swift/Kotlin — fast, accessible, and connected to a scalable backend.</p>
-      <ul>
-        <li>Flutter &amp; React Native apps</li>
-        <li>Native iOS (Swift) &amp; Android (Kotlin)</li>
-        <li>App Store &amp; Play Store launch</li>
-        <li>Push, payments &amp; analytics built-in</li>
-      </ul>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">🏢</div>
-      <span class="service-eyebrow">ADVISORY</span>
-      <h3>IT Consulting &amp; Teams</h3>
-      <p>Senior engineers and architects embedded in your team — or a full product squad that takes ownership from roadmap to release.</p>
-      <ul>
-        <li>Architecture &amp; tech due diligence</li>
-        <li>Digital transformation roadmap</li>
-        <li>Dedicated teams &amp; staff augmentation</li>
-        <li>CTO-as-a-service for startups</li>
-      </ul>
-    </article>
-  </div>
-
-  <div class="services-cta reveal">
-    <p>Not sure where to start? <a href="#contact">Book a free 30-minute consultation →</a></p>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">What we do</div>
+      <h2 class="section-title">Build, scale &amp; modernize — with one partner.</h2>
+      <p class="section-sub">From first prototype to production-grade platform, we cover the full software lifecycle so you can move fast without rebuilding later.</p>
+    </div>
+    <div class="services-grid stagger">
+      <article class="service-card">
+        <div class="service-icon">&#128187;</div>
+        <span class="service-eyebrow">Engineering</span>
+        <h3>Custom Software Development</h3>
+        <p>Web and mobile applications engineered around your workflows — built to scale, secure by default, and production-ready from day one.</p>
+        <ul>
+          <li>Product design &amp; UX architecture</li>
+          <li>Web apps, SPAs &amp; admin portals</li>
+          <li>REST &amp; GraphQL API platforms</li>
+          <li>Third-party &amp; ERP integrations</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">&#9729;</div>
+        <span class="service-eyebrow">Cloud Native</span>
+        <h3>Cloud &amp; DevOps</h3>
+        <p>Ship faster and sleep better. We automate infrastructure, deployments and observability across AWS, Azure and GCP — so releases become boring.</p>
+        <ul>
+          <li>Cloud migration &amp; architecture</li>
+          <li>CI/CD &amp; Infrastructure as Code</li>
+          <li>Kubernetes, Docker &amp; microservices</li>
+          <li>Monitoring, SRE &amp; cost optimization</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">&#129302;</div>
+        <span class="service-eyebrow">Intelligent Systems</span>
+        <h3>AI &amp; Data Engineering</h3>
+        <p>Turn data into a competitive advantage. We productionize ML models, build analytics pipelines, and ship AI features users actually use.</p>
+        <ul>
+          <li>Generative AI &amp; LLM integration</li>
+          <li>Predictive analytics &amp; forecasting</li>
+          <li>Data warehouses &amp; BI dashboards</li>
+          <li>RAG, agents &amp; workflow automation</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">&#128274;</div>
+        <span class="service-eyebrow">Trust &amp; Safety</span>
+        <h3>Cybersecurity</h3>
+        <p>Find the gaps before attackers do. We assess, harden and monitor your applications and infrastructure so you can ship with confidence.</p>
+        <ul>
+          <li>Penetration testing &amp; VAPT</li>
+          <li>Secure code review &amp; SDLC</li>
+          <li>SOC, SIEM &amp; 24x7 monitoring</li>
+          <li>ISO 27001, SOC 2 &amp; GDPR readiness</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">&#128241;</div>
+        <span class="service-eyebrow">Mobile First</span>
+        <h3>Mobile App Development</h3>
+        <p>Native-quality iOS and Android apps from a single codebase or in Swift/Kotlin — fast, accessible and connected to a scalable backend.</p>
+        <ul>
+          <li>Flutter &amp; React Native apps</li>
+          <li>Native iOS (Swift) &amp; Android (Kotlin)</li>
+          <li>App Store &amp; Play Store launch</li>
+          <li>Push, payments &amp; analytics built-in</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">&#127970;</div>
+        <span class="service-eyebrow">Advisory</span>
+        <h3>IT Consulting &amp; Teams</h3>
+        <p>Senior engineers and architects embedded in your team — or a full product squad that takes ownership from roadmap to release.</p>
+        <ul>
+          <li>Architecture &amp; tech due diligence</li>
+          <li>Digital transformation roadmap</li>
+          <li>Dedicated teams &amp; staff augmentation</li>
+          <li>CTO-as-a-service for startups</li>
+        </ul>
+      </article>
+    </div>
+    <div class="services-cta reveal">
+      Not sure where to start? <a href="#contact">Book a free 30-minute consultation &rarr;</a>
+    </div>
   </div>
 </section>
 
-<!-- ===== PRODUCTS ===== -->
 <section id="products">
-  <div class="section-header reveal">
-    <span class="section-tag">What We Build</span>
-    <h2>Solutions We Deliver</h2>
-    <p>A snapshot of the kind of software and digital platforms we design and build for our clients.</p>
-  </div>
-
-  <div class="products-grid stagger-children">
-    <div class="product-card">
-      <div class="product-image p1">📊</div>
-      <div class="product-body">
-        <span class="product-badge">Business Apps</span>
-        <h3>Custom Business Portals</h3>
-        <p>Internal dashboards, admin panels, and workflow portals that bring your operations, data, and teams together in one place.</p>
-        <a href="#contact" class="product-link">Discuss your project →</a>
-      </div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">What we build</div>
+      <h2 class="section-title">Solutions we deliver.</h2>
+      <p class="section-sub">A snapshot of the platforms, products and digital systems we design and build for our clients.</p>
     </div>
-
-    <div class="product-card">
-      <div class="product-image p2">🛒</div>
-      <div class="product-body">
-        <span class="product-badge">E-Commerce</span>
-        <h3>Web Stores & Marketplaces</h3>
-        <p>Fast, mobile-friendly online stores with secure payments, inventory management, and multi-channel selling built in.</p>
-        <a href="#contact" class="product-link">Discuss your project →</a>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image p3">📱</div>
-      <div class="product-body">
-        <span class="product-badge">Mobile</span>
-        <h3>Mobile Applications</h3>
-        <p>Native and cross-platform Android & iOS apps — from MVPs to full-scale products with clean UI and solid performance.</p>
-        <a href="#contact" class="product-link">Discuss your project →</a>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image p4">☁️</div>
-      <div class="product-body">
-        <span class="product-badge">Cloud</span>
-        <h3>Cloud & API Platforms</h3>
-        <p>Scalable cloud backends, REST/GraphQL APIs, and third-party integrations that connect your systems reliably.</p>
-        <a href="#contact" class="product-link">Discuss your project →</a>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image p5">🎓</div>
-      <div class="product-body">
-        <span class="product-badge">SaaS</span>
-        <h3>SaaS Products & MVPs</h3>
-        <p>End-to-end product development — from idea and prototype to launch-ready SaaS platforms with subscription billing.</p>
-        <a href="#contact" class="product-link">Discuss your project →</a>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image p6">🔧</div>
-      <div class="product-body">
-        <span class="product-badge">Modernization</span>
-        <h3>Legacy System Modernization</h3>
-        <p>Upgrade outdated software to modern, cloud-ready architectures — improving performance, security, and maintainability.</p>
-        <a href="#contact" class="product-link">Discuss your project →</a>
-      </div>
+    <div class="products-grid stagger">
+      <article class="product-card"><span class="product-emoji">&#128202;</span><span class="product-badge">Business Apps</span><h3>Custom Business Portals</h3><p>Internal dashboards, admin panels and workflow portals that bring your operations, data and teams together in one place.</p><a href="#contact" class="product-link">Discuss your project &rarr;</a></article>
+      <article class="product-card"><span class="product-emoji">&#128722;</span><span class="product-badge">E-Commerce</span><h3>Web Stores &amp; Marketplaces</h3><p>Fast, mobile-friendly online stores with secure payments, inventory management and multi-channel selling built in.</p><a href="#contact" class="product-link">Discuss your project &rarr;</a></article>
+      <article class="product-card"><span class="product-emoji">&#128241;</span><span class="product-badge">Mobile</span><h3>Mobile Applications</h3><p>Native and cross-platform Android &amp; iOS apps — from MVPs to full-scale products with clean UI and solid performance.</p><a href="#contact" class="product-link">Discuss your project &rarr;</a></article>
+      <article class="product-card"><span class="product-emoji">&#9729;</span><span class="product-badge">Cloud</span><h3>Cloud &amp; API Platforms</h3><p>Scalable cloud backends, REST/GraphQL APIs and third-party integrations that connect your systems reliably.</p><a href="#contact" class="product-link">Discuss your project &rarr;</a></article>
+      <article class="product-card"><span class="product-emoji">&#128640;</span><span class="product-badge">SaaS</span><h3>SaaS Products &amp; MVPs</h3><p>End-to-end product development — from idea and prototype to launch-ready SaaS platforms with subscription billing.</p><a href="#contact" class="product-link">Discuss your project &rarr;</a></article>
+      <article class="product-card"><span class="product-emoji">&#128295;</span><span class="product-badge">Modernization</span><h3>Legacy System Modernization</h3><p>Upgrade outdated software to modern, cloud-ready architectures — improving performance, security and maintainability.</p><a href="#contact" class="product-link">Discuss your project &rarr;</a></article>
     </div>
   </div>
 </section>
-
-<!-- ===== CONTACT ===== -->
 <section id="contact">
-  <div class="section-header reveal">
-    <span class="section-tag">Contact Us</span>
-    <h2>Let's Build Something Great</h2>
-    <p>Have a project in mind or need a consultation? Our team is ready to help.</p>
-  </div>
-
-  <div class="contact-wrapper reveal reveal-scale">
-    <div class="contact-info">
-      <h3>Get in Touch</h3>
-      <p>Reach out through any of the channels below or fill out the form and we'll respond within 24 hours.</p>
-
-      <div class="contact-item">
-        <div class="contact-item-icon">🏛️</div>
-        <div>
-          <h4>Corporate Office (USA)</h4>
-          <p>Lintasoft Inc.<br>254 Chapman Road,<br>Suite 101-B,<br>Newark, Delaware 19702, USA</p>
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-eyebrow">Get in touch</div>
+      <h2 class="section-title">Let's build something great.</h2>
+      <p class="section-sub">Have a project in mind or need a consultation? Tell us about it — our team typically responds within 24 hours.</p>
+    </div>
+    <div class="contact-wrapper reveal">
+      <div class="contact-info">
+        <h3>Contact information</h3>
+        <p>Reach out through any of the channels below or use the form.</p>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#127963;</div>
+          <div><h4>Corporate Office (USA)</h4><p>Lintasoft Inc.<br>254 Chapman Road, Suite 101-B,<br>Newark, Delaware 19702, USA</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#128205;</div>
+          <div><h4>Registered Office</h4><p>2nd Floor, Suite No. 517,<br>Valamkottil Tower, No. 4/461,<br>Judgemukku, Kakkanad, Kochi,<br>Kerala 682021, India</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#127970;</div>
+          <div><h4>Branch Office</h4><p>No. 558/2, Block C,<br>Hanudev Infotech Park,<br>Udayampalayam, Coimbatore,<br>Tamil Nadu 641028, India</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#9993;</div>
+          <div><h4>Email</h4><p>info@lintasoft.com</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#128337;</div>
+          <div><h4>Working Hours</h4><p>Mon &ndash; Sat: 9:00 AM &ndash; 6:30 PM<br>Sunday: Closed</p></div>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="X">&#120143;</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">&#9678;</a>
         </div>
       </div>
-
-      <div class="contact-item">
-        <div class="contact-item-icon">📍</div>
-        <div>
-          <h4>Registered Office</h4>
-          <p>Lintasoft<br>2nd Floor, Suite No. 517,<br>Valamkottil Tower, No. 4/461,<br>Judgemukku, Kakkanad,<br>Kochi, Kerala 682021, India</p>
-        </div>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-item-icon">🏢</div>
-        <div>
-          <h4>Branch Office</h4>
-          <p>No. 558/2, Block C,<br>Hanudev Infotech Park,<br>Udayampalayam,<br>Coimbatore, Tamil Nadu 641028, India</p>
-        </div>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-item-icon">📧</div>
-        <div>
-          <h4>Email Us</h4>
-          <p>info@lintasoft.com</p>
-        </div>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-item-icon">🕒</div>
-        <div>
-          <h4>Working Hours</h4>
-          <p>Monday – Saturday: 9:00 AM – 6:30 PM<br>Sunday: Closed</p>
-        </div>
-      </div>
-
-      <div class="social-links">
-        <a href="#" aria-label="Facebook">f</a>
-        <a href="#" aria-label="Twitter">𝕏</a>
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="Instagram">◎</a>
+      <div class="contact-form">
+        <div class="form-success" id="formSuccess">&#9989; Thank you! Your message has been sent. We'll get back to you shortly.</div>
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group"><label for="firstName">First Name</label><input type="text" id="firstName" required placeholder="John" /></div>
+            <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" required placeholder="Doe" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="email">Email</label><input type="email" id="email" required placeholder="john@company.com" /></div>
+            <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" placeholder="+91 98765 43210" /></div>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service">
+              <option value="">Select a service</option>
+              <option>Custom Software Development</option>
+              <option>Cloud Solutions &amp; DevOps</option>
+              <option>AI &amp; Data Engineering</option>
+              <option>Cybersecurity</option>
+              <option>Mobile App Development</option>
+              <option>IT Consulting</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Message</label><textarea id="message" required placeholder="Tell us about your project..."></textarea></div>
+          <button type="submit" class="btn-submit">Send Message &rarr;</button>
+        </form>
       </div>
     </div>
-
-    <div class="contact-form">
-      <div class="form-success" id="formSuccess">
-        ✅ Thank you! Your message has been sent. We'll get back to you shortly.
-      </div>
-      <form id="contactForm" onsubmit="submitForm(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" required placeholder="John" />
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" required placeholder="Doe" />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" required placeholder="john@company.com" />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" placeholder="+91 98765 43210" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="service">Service Interested In</label>
-          <select id="service">
-            <option value="">Select a service</option>
-            <option>Custom Software Development</option>
-            <option>Cloud Solutions & DevOps</option>
-            <option>AI & Data Analytics</option>
-            <option>Cybersecurity</option>
-            <option>Mobile App Development</option>
-            <option>IT Consulting</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" required placeholder="Tell us about your project..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">Send Message →</button>
-      </form>
+    <div class="map-wrapper reveal">
+      <iframe src="https://www.google.com/maps?q=Valamkottil+Towers,+Judgemukku,+Kakkanad,+Kerala+682021&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lintasoft office — Valamkottil Tower, Kakkanad, Kochi"></iframe>
     </div>
-  </div>
-
-  <div class="map-wrapper reveal reveal-scale">
-    <iframe
-      src="https://www.google.com/maps?q=Valamkottil+Towers,+Judgemukku,+Kakkanad,+Kerala+682021&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Lintasoft office location — Valamkottil Tower, Kakkanad, Kochi">
-    </iframe>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
-  <a href="#home" class="footer-logo">
-    <img src="assets/logo.jpg" alt="Lintasoft — Leading Thoughts" />
-  </a>
-  <p>Innovative IT Solutions from Kochi, Kerala</p>
-  <p style="margin-top:8px; font-size:0.85rem;">
-    <strong>Corporate Office (USA):</strong> 254 Chapman Road, Suite 101-B, Newark, Delaware 19702, USA
-  </p>
-  <p style="margin-top:4px; font-size:0.85rem;">
-    <strong>Registered Office:</strong> 2nd Floor, Suite No. 517, Valamkottil Tower, Judgemukku, Kakkanad, Kochi, Kerala 682021
-  </p>
-  <p style="margin-top:4px; font-size:0.85rem;">
-    <strong>Branch Office:</strong> No. 558/2, Block C, Hanudev Infotech Park, Udayampalayam, Coimbatore, Tamil Nadu 641028
-  </p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo.jpg" alt="Lintasoft" />
+      <p>Lintasoft is a global IT solutions company delivering custom software, cloud, AI and mobile products from India and the United States.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#products">Solutions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Custom Software</a></li>
+        <li><a href="#services">Cloud &amp; DevOps</a></li>
+        <li><a href="#services">AI &amp; Data</a></li>
+        <li><a href="#services">Mobile Apps</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="mailto:info@lintasoft.com">info@lintasoft.com</a></li>
+        <li><a href="#contact">Kochi, Kerala</a></li>
+        <li><a href="#contact">Coimbatore, TN</a></li>
+        <li><a href="#contact">Newark, DE, USA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-offices">
+    <p><strong>Corporate (USA):</strong> 254 Chapman Road, Suite 101-B, Newark, Delaware 19702</p>
+    <p><strong>Registered Office:</strong> 2nd Floor, Suite 517, Valamkottil Tower, Judgemukku, Kakkanad, Kochi, Kerala 682021</p>
+    <p><strong>Branch:</strong> No. 558/2, Block C, Hanudev Infotech Park, Udayampalayam, Coimbatore, Tamil Nadu 641028</p>
+  </div>
   <div class="footer-bottom">
-    © 2026 Lintasoft. All rights reserved. &nbsp;|&nbsp; Kakkanad, Kochi, Kerala, India
+    <span>&copy; 2026 Lintasoft. All rights reserved.</span>
+    <span>&ldquo;Leading Thoughts&rdquo;</span>
   </div>
 </footer>
 
-<!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
-<!-- ===== CHATBOT WIDGET ===== -->
 <button class="chatbot-toggle" id="chatToggle" onclick="toggleChat()" aria-label="Open chat">
-  <span class="toggle-icon">💬</span>
+  <span class="toggle-icon">&#128172;</span>
   <span class="chatbot-badge" id="chatBadge">1</span>
 </button>
 
 <div class="chatbot-window" id="chatWindow" role="dialog" aria-label="Lintasoft AI Assistant">
   <div class="chatbot-header">
-    <div class="chatbot-avatar">🤖</div>
-    <div class="chatbot-header-info">
+    <div class="chatbot-avatar">&#129302;</div>
+    <div>
       <h4>Linta AI Assistant</h4>
-      <div class="chatbot-status"><span class="status-dot"></span> Online · Typically replies instantly</div>
+      <div class="chatbot-status"><span class="status-dot"></span> Online &middot; Typically replies instantly</div>
     </div>
   </div>
-
   <div class="chatbot-messages" id="chatMessages"></div>
-
-  <div class="quick-replies" id="quickReplies">
+  <div class="quick-replies">
     <button class="quick-reply" onclick="quickAsk('What services do you offer?')">Services</button>
     <button class="quick-reply" onclick="quickAsk('Where are you located?')">Locations</button>
     <button class="quick-reply" onclick="quickAsk('How can I contact you?')">Contact</button>
-    <button class="quick-reply" onclick="quickAsk('What are your working hours?')">Working hours</button>
+    <button class="quick-reply" onclick="quickAsk('What are your working hours?')">Hours</button>
   </div>
-
   <form class="chatbot-input" onsubmit="sendChat(event)">
-    <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off" aria-label="Chat message" />
-    <button type="submit" class="chatbot-send" aria-label="Send">➤</button>
+    <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off" aria-label="Message" />
+    <button type="submit" class="chatbot-send" aria-label="Send">&#10148;</button>
   </form>
 </div>
 
 <script>
-  // ============ CHATBOT LOGIC ============
-  const chatMessages = document.getElementById('chatMessages');
-  const chatWindow = document.getElementById('chatWindow');
-  const chatToggle = document.getElementById('chatToggle');
-  const chatBadge = document.getElementById('chatBadge');
-  const chatInput = document.getElementById('chatInput');
+const navbar=document.getElementById('navbar');
+const scrollProgress=document.getElementById('scrollProgress');
+const backToTop=document.getElementById('backToTop');
+function onScroll(){
+  const y=window.scrollY;
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  scrollProgress.style.width=(h>0?(y/h)*100:0)+'%';
+  navbar.classList.toggle('scrolled',y>20);
+  backToTop.classList.toggle('visible',y>500);
+  let current='';
+  document.querySelectorAll('section[id]').forEach(sec=>{if(y>=sec.offsetTop-120)current=sec.id;});
+  document.querySelectorAll('.nav-link').forEach(link=>{link.classList.toggle('active',link.getAttribute('href')==='#'+current);});
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');}
 
-  const KNOWLEDGE = [
-    {
-      keywords: ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good evening', 'namaste'],
-      reply: "Hello! 👋 Welcome to Lintasoft. I'm Linta, your AI assistant. How can I help you today? You can ask about our services, locations, or how to reach us."
-    },
-    {
-      keywords: ['service', 'offer', 'do you do', 'what do you', 'develop', 'build'],
-      reply: "We offer a full range of IT services:<br><br>💻 <strong>Custom Software Development</strong><br>🌐 <strong>Web & Mobile App Development</strong><br>☁️ <strong>Cloud Solutions & DevOps</strong><br>🔧 <strong>API Development & Integration</strong><br>🏢 <strong>IT Consulting</strong><br>🚀 <strong>SaaS / MVP Development</strong><br><br>Want to discuss a project? Scroll to our <a href='#contact' onclick='closeChat()'>Contact section</a>."
-    },
-    {
-      keywords: ['location', 'address', 'office', 'where are you', 'located', 'branch', 'registered', 'headquarter', 'hq'],
-      reply: "We have three offices across the USA and India:<br><br>🏛️ <strong>Corporate Office (USA)</strong><br>Lintasoft Inc., 254 Chapman Road, Suite 101-B, Newark, Delaware 19702<br><br>📍 <strong>Registered Office — Kochi</strong><br>2nd Floor, Suite No. 517, Valamkottil Tower, No. 4/461, Judgemukku, Kakkanad, Kochi, Kerala 682021<br><br>🏢 <strong>Branch Office — Coimbatore</strong><br>No. 558/2, Block C, Hanudev Infotech Park, Udayampalayam, Coimbatore, Tamil Nadu 641028"
-    },
-    {
-      keywords: ['usa', 'united states', 'america', 'delaware', 'newark', 'chapman', 'corporate', 'us office'],
-      reply: "Our <strong>Corporate Office in the USA</strong> is at:<br><br>Lintasoft Inc.<br>254 Chapman Road,<br>Suite 101-B,<br>Newark, Delaware 19702, USA"
-    },
-    {
-      keywords: ['kochi', 'kerala', 'kakkanad', 'infopark', 'valamkottil'],
-      reply: "Our <strong>Registered Office in Kochi</strong> is at:<br><br>2nd Floor, Suite No. 517,<br>Valamkottil Tower, No. 4/461,<br>Judgemukku, Kakkanad,<br>Kochi, Kerala 682021<br><br>It's right in Kakkanad, close to Infopark Kochi."
-    },
-    {
-      keywords: ['coimbatore', 'tamil nadu', 'hanudev', 'udayampalayam'],
-      reply: "Our <strong>Coimbatore Branch Office</strong> is at:<br><br>No. 558/2, Block C,<br>Hanudev Infotech Park,<br>Udayampalayam,<br>Coimbatore, Tamil Nadu 641028"
-    },
-    {
-      keywords: ['contact', 'email', 'phone', 'call', 'reach', 'whatsapp'],
-      reply: "You can reach us by:<br><br>📧 Email: <strong>info@lintasoft.com</strong><br>📍 Visiting either of our offices in Kochi or Coimbatore<br>📝 Filling out the contact form at the bottom of this page<br><br>Prefer us to call you? Just send us a message via the <a href='#contact' onclick='closeChat()'>contact form</a> and we'll get back to you within 24 hours."
-    },
-    {
-      keywords: ['hour', 'timing', 'open', 'close', 'working', 'when'],
-      reply: "Our working hours are:<br><br>🕘 Monday – Saturday: <strong>9:00 AM – 6:30 PM</strong><br>🚫 Sunday: Closed<br><br>You can leave a message anytime using the contact form and we'll respond on the next working day."
-    },
-    {
-      keywords: ['price', 'cost', 'quote', 'rate', 'charge', 'budget', 'how much'],
-      reply: "Project costs depend on scope, complexity, and timeline. The best way to get an accurate quote is to share your requirements through our <a href='#contact' onclick='closeChat()'>contact form</a> — our team will get back to you within 24 hours with a tailored proposal. 📩"
-    },
-    {
-      keywords: ['technology', 'tech stack', 'stack', 'framework', 'language', 'platform'],
-      reply: "We work with a modern, broad technology stack:<br><br>🌐 <strong>Frontend:</strong> React, Angular, Vue, Flutter<br>⚙️ <strong>Backend:</strong> Node.js, Python, .NET, Java, PHP<br>☁️ <strong>Cloud:</strong> AWS, Azure, Google Cloud<br>🗄️ <strong>Databases:</strong> PostgreSQL, MySQL, MongoDB, SQL Server<br>📱 <strong>Mobile:</strong> Native iOS/Android & cross-platform apps"
-    },
-    {
-      keywords: ['about', 'who are you', 'company', 'tell me about', 'lintasoft'],
-      reply: "<strong>Lintasoft</strong> is an IT solutions company with offices in <strong>Kakkanad, Kochi (Kerala)</strong> and <strong>Coimbatore (Tamil Nadu)</strong>. We design and build custom software, web and mobile applications, cloud platforms, and SaaS products for startups, SMEs, and enterprises. Our focus is on reliable, scalable, and practical technology that delivers real business value.<br><br>Want to know more? Just ask!"
-    },
-    {
-      keywords: ['product', 'mvp', 'saas', 'startup'],
-      reply: "We build a wide variety of solutions, including:<br><br>📊 Custom business portals & dashboards<br>🛒 E-commerce platforms & web stores<br>📱 Android & iOS mobile apps<br>☁️ Cloud backends & APIs<br>🚀 SaaS products and MVPs<br>🔧 Legacy system modernization<br><br>Have a product idea? We'd love to hear about it — reach us via the <a href='#contact' onclick='closeChat()'>contact form</a>."
-    },
-    {
-      keywords: ['hire', 'dedicated', 'team', 'developer', 'resource', 'staffing', 'outsourcing'],
-      reply: "Yes! We offer flexible engagement models — dedicated developers, project-based teams, or end-to-end product delivery. Tell us about your requirements through the <a href='#contact' onclick='closeChat()'>contact form</a> and we'll suggest the best-fit team and model."
-    },
-    {
-      keywords: ['thank', 'thanks', 'great', 'awesome', 'appreciate'],
-      reply: "You're welcome! 😊 Is there anything else I can help you with? Feel free to ask about our services, locations, or how to start a project with Lintasoft."
-    },
-    {
-      keywords: ['bye', 'goodbye', 'see you', 'later'],
-      reply: "Goodbye! 👋 Thanks for visiting Lintasoft. If you'd like to discuss a project, don't hesitate to reach out via our contact form. Have a great day!"
-    }
-  ];
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
 
-  const FALLBACK = "I'm not quite sure how to answer that yet 🤔. You can ask me about our <strong>services</strong>, <strong>office locations</strong>, <strong>contact details</strong>, or <strong>working hours</strong>. For anything else, please use the <a href='#contact' onclick='closeChat()'>contact form</a> and our team will get back to you within 24 hours.";
+function submitForm(e){e.preventDefault();const ok=document.getElementById('formSuccess');ok.style.display='block';document.getElementById('contactForm').reset();setTimeout(()=>ok.style.display='none',5000);}
 
-  function addMessage(text, sender) {
-    const div = document.createElement('div');
-    div.className = 'msg ' + sender;
-    div.innerHTML = text;
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function showTyping() {
-    const div = document.createElement('div');
-    div.className = 'msg bot typing';
-    div.id = 'typingIndicator';
-    div.innerHTML = '<span></span><span></span><span></span>';
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function hideTyping() {
-    const t = document.getElementById('typingIndicator');
-    if (t) t.remove();
-  }
-
-  function getReply(input) {
-    const text = input.toLowerCase().trim();
-    let bestMatch = null;
-    let bestScore = 0;
-    for (const entry of KNOWLEDGE) {
-      let score = 0;
-      for (const kw of entry.keywords) {
-        if (text.includes(kw.toLowerCase())) score += kw.length;
-      }
-      if (score > bestScore) {
-        bestScore = score;
-        bestMatch = entry;
-      }
-    }
-    return bestMatch ? bestMatch.reply : FALLBACK;
-  }
-
-  function botRespond(userText) {
-    showTyping();
-    const delay = 500 + Math.random() * 600;
-    setTimeout(() => {
-      hideTyping();
-      addMessage(getReply(userText), 'bot');
-    }, delay);
-  }
-
-  function sendChat(e) {
-    e.preventDefault();
-    const text = chatInput.value.trim();
-    if (!text) return;
-    addMessage(text, 'user');
-    chatInput.value = '';
-    botRespond(text);
-  }
-
-  function quickAsk(text) {
-    addMessage(text, 'user');
-    botRespond(text);
-  }
-
-  function toggleChat() {
-    chatWindow.classList.toggle('open');
-    chatToggle.classList.toggle('active');
-    if (chatWindow.classList.contains('open')) {
-      chatBadge.style.display = 'none';
-      setTimeout(() => chatInput.focus(), 300);
-    }
-  }
-
-  function closeChat() {
-    if (chatWindow.classList.contains('open')) toggleChat();
-  }
-
-  // Welcome message
-  window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      addMessage("Hi! 👋 I'm <strong>Linta</strong>, the AI assistant at Lintasoft. How can I help you today? Ask me about our services, locations, or contact info.", 'bot');
-    }, 400);
-  });
-
-  // ============ SCROLL ANIMATIONS ============
-  const scrollProgress = document.getElementById('scrollProgress');
-  const navbar = document.querySelector('.navbar');
-  const backToTop = document.getElementById('backToTop');
-
-  function onScroll() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollProgress.style.width = pct + '%';
-    navbar.classList.toggle('scrolled', scrollTop > 30);
-    backToTop.classList.toggle('visible', scrollTop > 500);
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Intersection observer for reveal animations
-  const revealEls = document.querySelectorAll('.reveal, .stagger-children');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-  revealEls.forEach(el => io.observe(el));
-
-  // Mobile menu toggle
-  function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
-  }
-
-  function closeMenu() {
-    document.getElementById('navLinks').classList.remove('open');
-  }
-
-  // Active nav highlighting on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinkEls = document.querySelectorAll('.nav-link');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const top = section.offsetTop - 100;
-      if (window.scrollY >= top) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinkEls.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  // Contact form handler
-  function submitForm(e) {
-    e.preventDefault();
-    const success = document.getElementById('formSuccess');
-    success.style.display = 'block';
-    document.getElementById('contactForm').reset();
-    setTimeout(() => {
-      success.style.display = 'none';
-    }, 5000);
-  }
+const chatMessages=document.getElementById('chatMessages');
+const chatWindow=document.getElementById('chatWindow');
+const chatToggle=document.getElementById('chatToggle');
+const chatBadge=document.getElementById('chatBadge');
+const chatInput=document.getElementById('chatInput');
+const KNOWLEDGE=[
+  {keywords:['hello','hi','hey','greetings','namaste'],reply:"Hello! \u{1F44B} I'm Linta, the AI assistant at Lintasoft. How can I help? Ask me about our services, locations or contact info."},
+  {keywords:['service','offer','do you do','what do you','develop','build'],reply:"We offer:<br><br>\u{1F4BB} <strong>Custom Software Development</strong><br>&#9729; <strong>Cloud &amp; DevOps</strong><br>&#129302; <strong>AI &amp; Data Engineering</strong><br>&#128274; <strong>Cybersecurity</strong><br>&#128241; <strong>Mobile App Development</strong><br>&#127970; <strong>IT Consulting &amp; Teams</strong>"},
+  {keywords:['location','address','office','where are you','located','branch','registered','hq','headquarter'],reply:"Three offices:<br><br>&#127963; <strong>Corporate (USA)</strong> — 254 Chapman Rd, Suite 101-B, Newark, DE 19702<br><br>&#128205; <strong>Kochi (Registered)</strong> — 2nd Floor, Suite 517, Valamkottil Tower, Kakkanad, Kochi, Kerala 682021<br><br>&#127970; <strong>Coimbatore (Branch)</strong> — No. 558/2, Block C, Hanudev Infotech Park, Coimbatore, TN 641028"},
+  {keywords:['usa','united states','america','delaware','newark','chapman'],reply:"Our <strong>US corporate office</strong>:<br><br>Lintasoft Inc.<br>254 Chapman Road, Suite 101-B,<br>Newark, Delaware 19702, USA"},
+  {keywords:['kochi','kerala','kakkanad','infopark','valamkottil'],reply:"Our <strong>Kochi registered office</strong>:<br><br>2nd Floor, Suite 517,<br>Valamkottil Tower, No. 4/461,<br>Judgemukku, Kakkanad,<br>Kochi, Kerala 682021"},
+  {keywords:['coimbatore','tamil nadu','hanudev','udayampalayam'],reply:"Our <strong>Coimbatore branch</strong>:<br><br>No. 558/2, Block C,<br>Hanudev Infotech Park,<br>Udayampalayam,<br>Coimbatore, Tamil Nadu 641028"},
+  {keywords:['contact','email','phone','call','reach','whatsapp'],reply:"Reach us at:<br><br>&#9993; <strong>info@lintasoft.com</strong><br>&#128205; Kochi, Coimbatore or Newark<br>&#128221; Or use the contact form on this page<br><br>We respond within 24 hours."},
+  {keywords:['hour','timing','open','close','working','when'],reply:"Working hours:<br><br>&#128336; <strong>Mon – Sat:</strong> 9:00 AM – 6:30 PM<br>&#128683; <strong>Sunday:</strong> Closed"},
+  {keywords:['price','cost','quote','rate','charge','budget','how much'],reply:"Project cost depends on scope and complexity. Share your requirements via the <a href='#contact' onclick='closeChat()'>contact form</a> and we'll send a tailored proposal within 24 hours."},
+  {keywords:['technology','tech stack','stack','framework'],reply:"We work with React, Next.js, Angular, Vue, TypeScript, Node.js, Python, .NET, Java, Flutter, React Native, AWS, Azure, GCP, Docker, Kubernetes, PostgreSQL, MySQL and MongoDB."},
+  {keywords:['about','who are you','company','lintasoft'],reply:"<strong>Lintasoft</strong> is an IT solutions company with offices in Newark (USA), Kochi and Coimbatore (India). We design and build custom software, cloud platforms, AI systems and mobile products for startups, SMEs and enterprises."},
+  {keywords:['thank','thanks','great','awesome'],reply:"You're welcome! \u{1F60A} Anything else I can help with?"},
+  {keywords:['bye','goodbye','see you'],reply:"Goodbye! \u{1F44B} Thanks for visiting Lintasoft. Have a great day!"}
+];
+const FALLBACK="I'm not sure how to answer that \u{1F914}. Try asking about our <strong>services</strong>, <strong>office locations</strong>, or <strong>contact details</strong>.";
+function addMessage(t,s){const d=document.createElement('div');d.className='msg '+s;d.innerHTML=t;chatMessages.appendChild(d);chatMessages.scrollTop=chatMessages.scrollHeight;}
+function showTyping(){const d=document.createElement('div');d.className='msg bot typing';d.id='typingIndicator';d.innerHTML='<span></span><span></span><span></span>';chatMessages.appendChild(d);chatMessages.scrollTop=chatMessages.scrollHeight;}
+function hideTyping(){const t=document.getElementById('typingIndicator');if(t)t.remove();}
+function getReply(input){const text=input.toLowerCase().trim();let best=null,score=0;for(const e of KNOWLEDGE){let s=0;for(const k of e.keywords){if(text.includes(k.toLowerCase()))s+=k.length;}if(s>score){score=s;best=e;}}return best?best.reply:FALLBACK;}
+function botRespond(t){showTyping();setTimeout(()=>{hideTyping();addMessage(getReply(t),'bot');},500+Math.random()*600);}
+function sendChat(e){e.preventDefault();const t=chatInput.value.trim();if(!t)return;addMessage(t,'user');chatInput.value='';botRespond(t);}
+function quickAsk(t){addMessage(t,'user');botRespond(t);}
+function toggleChat(){chatWindow.classList.toggle('open');chatToggle.classList.toggle('active');if(chatWindow.classList.contains('open')){chatBadge.style.display='none';setTimeout(()=>chatInput.focus(),300);}}
+function closeChat(){if(chatWindow.classList.contains('open'))toggleChat();}
+window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{addMessage("Hi! \u{1F44B} I'm <strong>Linta</strong>, the AI assistant at Lintasoft. How can I help you today?",'bot');},400);});
 </script>
-
 </body>
 </html>
