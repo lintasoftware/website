@@ -36,8 +36,9 @@
   .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     z-index: 1000;
     padding: 0 6%;
@@ -45,6 +46,24 @@
     align-items: center;
     justify-content: space-between;
     height: 72px;
+    transition: box-shadow 0.3s ease, background 0.3s ease, height 0.3s ease;
+  }
+  .navbar.scrolled {
+    box-shadow: 0 6px 24px rgba(15,76,129,0.12);
+    background: rgba(255,255,255,0.97);
+    height: 66px;
+  }
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    z-index: 1001;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px rgba(0,180,216,0.6);
   }
 
   .logo {
@@ -121,10 +140,18 @@
     display: flex;
     align-items: center;
     padding: 100px 6% 60px;
-    background: linear-gradient(135deg, #0f4c81 0%, #1a6fa8 50%, #00b4d8 100%);
+    background: linear-gradient(135deg, #0a365c 0%, #0f4c81 25%, #1a6fa8 55%, #0096c7 80%, #00b4d8 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 14s ease infinite;
     color: #fff;
     position: relative;
     overflow: hidden;
+  }
+
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .hero::before {
@@ -145,10 +172,60 @@
     border-radius: 50%;
   }
 
+  /* Floating decorative shapes */
+  .floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .shape-1 {
+    width: 80px; height: 80px;
+    background: #7ff0ff;
+    top: 22%; right: 12%;
+    animation: float 9s ease-in-out infinite;
+  }
+  .shape-2 {
+    width: 50px; height: 50px;
+    background: #fff;
+    top: 65%; right: 22%;
+    animation: float 7s ease-in-out infinite 1.5s;
+  }
+  .shape-3 {
+    width: 30px; height: 30px;
+    background: #00b4d8;
+    top: 35%; right: 30%;
+    animation: float 6s ease-in-out infinite 0.8s;
+  }
+  .shape-4 {
+    width: 110px; height: 110px;
+    border: 2px solid rgba(255,255,255,0.35);
+    background: transparent;
+    bottom: 18%; right: 8%;
+    border-radius: 24px;
+    transform: rotate(25deg);
+    animation: spin 22s linear infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-25px) rotate(8deg); }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
   .hero-content {
     max-width: 700px;
     position: relative;
     z-index: 2;
+    animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .hero-badge {
@@ -195,7 +272,19 @@
   .btn-primary {
     background: #fff;
     color: var(--primary);
+    position: relative;
+    overflow: hidden;
   }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 50%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(0,180,216,0.25), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+  }
+  .btn-primary:hover::after { left: 130%; }
   .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -214,6 +303,47 @@
   /* ===== SECTIONS ===== */
   section {
     padding: 90px 6%;
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-left  { transform: translateX(-50px); }
+  .reveal-right { transform: translateX(50px); }
+  .reveal-scale { transform: scale(0.92); }
+  .reveal-left.visible,
+  .reveal-right.visible,
+  .reveal-scale.visible { transform: translate(0) scale(1); }
+
+  /* Stagger children inside grids */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
+  .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
+  .stagger-children.visible > *:nth-child(2) { transition-delay: 0.15s; }
+  .stagger-children.visible > *:nth-child(3) { transition-delay: 0.25s; }
+  .stagger-children.visible > *:nth-child(4) { transition-delay: 0.35s; }
+  .stagger-children.visible > *:nth-child(5) { transition-delay: 0.45s; }
+  .stagger-children.visible > *:nth-child(6) { transition-delay: 0.55s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .reveal, .stagger-children > * { opacity: 1 !important; transform: none !important; }
   }
 
   .section-header {
@@ -425,10 +555,27 @@
     border: 1px solid transparent;
   }
 
+  .service-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(0,180,216,0.08), transparent);
+    transition: left 0.7s ease;
+    pointer-events: none;
+  }
+  .service-card:hover::before { left: 130%; }
   .service-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
     border-color: rgba(0,180,216,0.2);
+  }
+  .service-card:hover .service-icon {
+    transform: rotate(-8deg) scale(1.1);
   }
 
   .service-icon {
@@ -440,6 +587,7 @@
     justify-content: center;
     font-size: 1.6rem;
     margin-bottom: 20px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .service-card h3 {
@@ -766,7 +914,54 @@
     justify-content: center;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
+  .chatbot-toggle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(0,180,216,0.5);
+    animation: pulseRing 2.4s ease-out infinite;
+    z-index: -1;
+  }
+  @keyframes pulseRing {
+    0%   { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.7); opacity: 0; }
+  }
   .chatbot-toggle:hover { transform: scale(1.08); }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary);
+    border: 1.5px solid rgba(15,76,129,0.15);
+    box-shadow: 0 6px 18px rgba(15,76,129,0.18);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 9997;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  .back-to-top:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+  }
   .chatbot-toggle .toggle-icon { transition: opacity 0.2s; }
   .chatbot-toggle.active .toggle-icon { opacity: 0; }
   .chatbot-toggle.active::after {
@@ -1061,6 +1256,9 @@
 </head>
 <body>
 
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <div class="logo">
@@ -1078,6 +1276,10 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="home">
+  <div class="floating-shape shape-1"></div>
+  <div class="floating-shape shape-2"></div>
+  <div class="floating-shape shape-3"></div>
+  <div class="floating-shape shape-4"></div>
   <div class="hero-content">
     <h1>Innovative IT Solutions</h1>
     <p>Lintasoft is a software and IT services company with offices in Kakkanad (Kochi) and Coimbatore. We design and build custom software, web and mobile applications, and cloud solutions that help businesses modernize, streamline operations, and grow.</p>
@@ -1090,14 +1292,14 @@
 
 <!-- ===== ABOUT ===== -->
 <section id="about">
-  <div class="section-header">
+  <div class="section-header reveal">
     <span class="section-tag">About Us</span>
     <h2>Who We Are</h2>
     <p>A passionate team of engineers, designers, and strategists building tomorrow's technology today.</p>
   </div>
 
   <div class="about-grid">
-    <div class="about-visual">
+    <div class="about-visual reveal reveal-left">
       <div class="bento-grid">
         <div class="bento-card">
           <div class="bento-icon">🧩</div>
@@ -1124,7 +1326,7 @@
       </div>
     </div>
 
-    <div class="about-text">
+    <div class="about-text reveal reveal-right">
       <h3>Your Technology Partner from South India</h3>
       <p>Lintasoft is an IT solutions company headquartered in Kakkanad, Kochi — home to Infopark and one of South India's fastest-growing technology ecosystems — with a branch office at Hanudev Infotech Park in Coimbatore, Tamil Nadu. We work with startups, SMEs, and enterprises to turn ideas into reliable software products.</p>
       <p>From custom web and mobile applications to cloud infrastructure and IT consulting, our team combines modern engineering practices with a practical, business-first approach. We focus on delivering solutions that are scalable, maintainable, and genuinely useful.</p>
@@ -1141,13 +1343,13 @@
 
 <!-- ===== SERVICES ===== -->
 <section id="services">
-  <div class="section-header">
+  <div class="section-header reveal">
     <span class="section-tag">Our Services</span>
     <h2>What We Offer</h2>
     <p>End-to-end IT services tailored to accelerate your business growth and digital journey.</p>
   </div>
 
-  <div class="services-grid">
+  <div class="services-grid stagger-children">
     <div class="service-card">
       <div class="service-icon">💻</div>
       <h3>Custom Software Development</h3>
@@ -1224,13 +1426,13 @@
 
 <!-- ===== PRODUCTS ===== -->
 <section id="products">
-  <div class="section-header">
+  <div class="section-header reveal">
     <span class="section-tag">What We Build</span>
     <h2>Solutions We Deliver</h2>
     <p>A snapshot of the kind of software and digital platforms we design and build for our clients.</p>
   </div>
 
-  <div class="products-grid">
+  <div class="products-grid stagger-children">
     <div class="product-card">
       <div class="product-image p1">📊</div>
       <div class="product-body">
@@ -1295,13 +1497,13 @@
 
 <!-- ===== CONTACT ===== -->
 <section id="contact">
-  <div class="section-header">
+  <div class="section-header reveal">
     <span class="section-tag">Contact Us</span>
     <h2>Let's Build Something Great</h2>
     <p>Have a project in mind or need a consultation? Our team is ready to help.</p>
   </div>
 
-  <div class="contact-wrapper">
+  <div class="contact-wrapper reveal reveal-scale">
     <div class="contact-info">
       <h3>Get in Touch</h3>
       <p>Reach out through any of the channels below or fill out the form and we'll respond within 24 hours.</p>
@@ -1397,7 +1599,7 @@
     </div>
   </div>
 
-  <div class="map-wrapper">
+  <div class="map-wrapper reveal reveal-scale">
     <iframe
       src="https://www.google.com/maps?q=Valamkottil+Towers,+Judgemukku,+Kakkanad,+Kerala+682021&output=embed"
       loading="lazy"
@@ -1424,6 +1626,9 @@
     © 2026 Lintasoft. All rights reserved. &nbsp;|&nbsp; Kakkanad, Kochi, Kerala, India
   </div>
 </footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <!-- ===== CHATBOT WIDGET ===== -->
 <button class="chatbot-toggle" id="chatToggle" onclick="toggleChat()" aria-label="Open chat">
@@ -1605,6 +1810,34 @@
       addMessage("Hi! 👋 I'm <strong>Linta</strong>, the AI assistant at Lintasoft. How can I help you today? Ask me about our services, locations, or contact info.", 'bot');
     }, 400);
   });
+
+  // ============ SCROLL ANIMATIONS ============
+  const scrollProgress = document.getElementById('scrollProgress');
+  const navbar = document.querySelector('.navbar');
+  const backToTop = document.getElementById('backToTop');
+
+  function onScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+    navbar.classList.toggle('scrolled', scrollTop > 30);
+    backToTop.classList.toggle('visible', scrollTop > 500);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Intersection observer for reveal animations
+  const revealEls = document.querySelectorAll('.reveal, .stagger-children');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  revealEls.forEach(el => io.observe(el));
 
   // Mobile menu toggle
   function toggleMenu() {
