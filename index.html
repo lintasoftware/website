@@ -761,115 +761,29 @@ footer{background:var(--bg-dark);color:rgba(255,255,255,.7);padding:60px 6% 30px
     </div>
 
     <div class="clients-grid stagger">
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#1e40af,#0891b2);">NP</div>
-        <div class="client-info">
-          <h4>NorthPeak Capital</h4>
-          <span>Financial Services · New York, NY</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#7c3aed,#db2777);">MH</div>
-        <div class="client-info">
-          <h4>Meridian Health</h4>
-          <span>Healthcare · Boston, MA</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#059669,#0891b2);">CV</div>
-        <div class="client-info">
-          <h4>ClearVue Retail</h4>
-          <span>Retail · Austin, TX</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#d97706,#dc2626);">SL</div>
-        <div class="client-info">
-          <h4>Stratus Logistics</h4>
-          <span>Logistics · Chicago, IL</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#0891b2,#1e40af);">AC</div>
-        <div class="client-info">
-          <h4>Acme Industrial</h4>
-          <span>Manufacturing · Detroit, MI</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#db2777,#7c3aed);">BR</div>
-        <div class="client-info">
-          <h4>Brightway EdTech</h4>
-          <span>Education · San Francisco, CA</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#9333ea,#db2777);">PV</div>
-        <div class="client-info">
-          <h4>PayVantage</h4>
-          <span>Payments · Newark, DE</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#0d9488,#0891b2);">AG</div>
-        <div class="client-info">
-          <h4>AgraGrowth Inc.</h4>
-          <span>Agribusiness · Des Moines, IA</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#ea580c,#ca8a04);">SH</div>
-        <div class="client-info">
-          <h4>Shoreline Holdings</h4>
-          <span>Real Estate · Miami, FL</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#0284c7,#7c3aed);">MX</div>
-        <div class="client-info">
-          <h4>Medix Diagnostics</h4>
-          <span>Diagnostics · Philadelphia, PA</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#be185d,#9333ea);">TC</div>
-        <div class="client-info">
-          <h4>TrueCloud Systems</h4>
-          <span>SaaS · Seattle, WA</span>
-        </div>
-      </div>
-
-      <div class="client-card">
-        <div class="client-logo" style="background:linear-gradient(135deg,#15803d,#0891b2);">FW</div>
-        <div class="client-info">
-          <h4>FieldWorks Energy</h4>
-          <span>Energy · Houston, TX</span>
-        </div>
-      </div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#1e40af,#0891b2);">FS</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#7c3aed,#db2777);">HC</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#059669,#0891b2);">RT</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#d97706,#dc2626);">MF</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#0891b2,#1e40af);">LG</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#db2777,#7c3aed);">ED</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#9333ea,#db2777);">PY</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#0d9488,#0891b2);">AG</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#ea580c,#ca8a04);">RL</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#0284c7,#7c3aed);">MD</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#be185d,#9333ea);">TC</div>
+      <div class="client-logo-card" style="background:linear-gradient(135deg,#15803d,#0891b2);">FW</div>
     </div>
 
-    <p class="clients-note">+ Many more businesses across the United States.</p>
+    <p class="clients-note">Trusted by growing businesses across the United States.</p>
   </div>
   <style>
-    .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-    .client-card{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;transition:all .3s cubic-bezier(.22,1,.36,1);}
-    .client-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-strong);}
-    .client-logo{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.05rem;letter-spacing:-.5px;flex-shrink:0;box-shadow:0 6px 16px rgba(0,0,0,.12);}
-    .client-info h4{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:2px;letter-spacing:-.01em;}
-    .client-info span{font-size:.82rem;color:var(--text-muted);}
+    .clients-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+    .client-logo-card{aspect-ratio:1;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.6rem;letter-spacing:-1px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(0,0,0,.1);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease;cursor:default;}
+    .client-logo-card:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 16px 36px rgba(0,0,0,.18);}
     .clients-note{text-align:center;margin-top:36px;font-size:.92rem;color:var(--text-soft);}
-    @media(max-width:1024px){.clients-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:560px){.clients-grid{grid-template-columns:1fr;}}
+    @media(max-width:1024px){.clients-grid{grid-template-columns:repeat(4,1fr);}}
+    @media(max-width:560px){.clients-grid{grid-template-columns:repeat(3,1fr);}.client-logo-card{font-size:1.2rem;}}
   </style>
 </section>
 
