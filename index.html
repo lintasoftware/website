@@ -429,6 +429,118 @@ footer{background:var(--bg-dark);color:rgba(255,255,255,.7);padding:60px 6% 30px
     </div>
   </div>
 </section>
+<!-- ===== PROCESS ===== -->
+<section id="process" style="background:var(--bg-dark);color:#fff;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 30%,transparent 100%);pointer-events:none;"></div>
+  <div class="container" style="position:relative;">
+    <div class="section-header center reveal" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;color:#60a5fa;">How we work</div>
+      <h2 class="section-title" style="color:#fff;">From idea to impact — in four steps.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.65);margin:0 auto;">A transparent, proven process that keeps you in control and your product on track.</p>
+    </div>
+
+    <div class="process-grid stagger" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Discover</h3>
+        <p>We dig into your goals, users and constraints — then map a clear product and technical roadmap.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Design</h3>
+        <p>We craft intuitive UX and modern UI, validate with prototypes, and lock in architecture before code.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>Build</h3>
+        <p>Two-week sprints, daily demos, and continuous integration — you see real software every iteration.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>Launch &amp; scale</h3>
+        <p>We deploy, monitor and iterate — supporting your growth with cloud, security and ongoing engineering.</p>
+      </div>
+    </div>
+  </div>
+  <style>
+    .process-step{position:relative;padding:32px 26px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);transition:all .3s ease;overflow:hidden;}
+    .process-step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+    .process-step:hover{transform:translateY(-6px);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15);}
+    .process-step:hover::before{transform:scaleX(1);}
+    .step-num{font-size:2.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;letter-spacing:-.03em;margin-bottom:14px;}
+    .process-step h3{font-size:1.2rem;font-weight:700;margin-bottom:10px;color:#fff;}
+    .process-step p{font-size:.92rem;color:rgba(255,255,255,.65);line-height:1.6;}
+    @media(max-width:1024px){.process-grid{grid-template-columns:repeat(2,1fr)!important;}}
+    @media(max-width:560px){.process-grid{grid-template-columns:1fr!important;}}
+  </style>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Client voices</div>
+      <h2 class="section-title">Trusted by teams that ship.</h2>
+      <p class="section-sub">A few words from the founders and product leaders we've partnered with.</p>
+    </div>
+
+    <div class="testimonials-grid stagger" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <figure class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Lintasoft took our rough idea and turned it into a polished SaaS platform in months. Their engineers felt like part of our team."</blockquote>
+        <figcaption>
+          <div class="avatar" style="background:linear-gradient(135deg,#2563eb,#06b6d4);">RK</div>
+          <div><strong>Rahul K.</strong><span>Founder &amp; CEO, FinTech Startup</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The team's cloud expertise cut our infrastructure costs by 40% while improving uptime. Pragmatic, communicative and reliable."</blockquote>
+        <figcaption>
+          <div class="avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">SM</div>
+          <div><strong>Sarah M.</strong><span>CTO, Healthcare Platform</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"From discovery to launch the process was transparent. We shipped our mobile app on time and the quality has been exceptional."</blockquote>
+        <figcaption>
+          <div class="avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">AV</div>
+          <div><strong>Arjun V.</strong><span>Product Head, E-Commerce</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <style>
+    .testimonial{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px 28px;display:flex;flex-direction:column;gap:16px;transition:all .3s ease;margin:0;}
+    .testimonial:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong);}
+    .stars{color:#fbbf24;font-size:1rem;letter-spacing:2px;}
+    .testimonial blockquote{font-size:1rem;color:var(--text);line-height:1.6;font-style:italic;flex-grow:1;}
+    .testimonial figcaption{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--border);}
+    .avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+    .testimonial figcaption strong{display:block;font-size:.95rem;color:var(--text);}
+    .testimonial figcaption span{display:block;font-size:.82rem;color:var(--text-muted);}
+    @media(max-width:1024px){.testimonials-grid{grid-template-columns:1fr!important;}}
+  </style>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section id="cta" style="padding:80px 6%;background:var(--bg);">
+  <div class="container reveal" style="background:linear-gradient(135deg,#0f1524 0%,#1e3a8a 50%,#06b6d4 100%);border-radius:var(--radius-lg);padding:70px 50px;text-align:center;color:#fff;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 30%,transparent 100%);"></div>
+    <div style="position:relative;">
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;">Have a project in mind?</h2>
+      <p style="color:rgba(255,255,255,.8);font-size:1.08rem;max-width:540px;margin:0 auto 32px;line-height:1.6;">Let's talk. Book a free 30-minute consultation and we'll help you shape the right solution — no commitment.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="#contact" class="btn btn-primary" style="background:#fff;color:var(--text);">Start a project &rarr;</a>
+        <a href="mailto:info@lintasoft.com" class="btn btn-ghost">Email us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="container">
     <div class="section-header center reveal">
