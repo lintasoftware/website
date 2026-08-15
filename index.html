@@ -176,10 +176,13 @@ section{padding:110px 6%;position:relative}
 
 #contact{background:var(--bg-soft)}
 .contact-wrapper{display:grid;grid-template-columns:1fr 1.1fr;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
-.contact-info{background:var(--bg-dark);color:#fff;padding:50px 40px;position:relative;overflow:hidden}
-.contact-info::before{content:'';position:absolute;top:-40%;right:-30%;width:300px;height:300px;background:radial-gradient(circle,rgba(37,99,235,.3),transparent 70%);border-radius:50%}
+.contact-info{position:relative;background:linear-gradient(135deg,#1e1b4b 0%,#4c1d95 40%,#831843 75%,#7c2d12 100%);background-size:200% 200%;animation:gradientShift 14s ease infinite;color:#fff;padding:50px 40px;position:relative;overflow:hidden}
+.contact-info::before{content:'';position:absolute;top:-40%;right:-30%;width:340px;height:340px;background:radial-gradient(circle,rgba(236,72,153,.55),transparent 65%);border-radius:50%;filter:blur(20px);animation:floatBlob 14s ease-in-out infinite}
+.contact-info::after{content:'';position:absolute;bottom:-30%;left:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(34,211,238,.45),transparent 65%);border-radius:50%;filter:blur(20px);animation:floatBlob 18s ease-in-out infinite reverse}
+.contact-info .contact-inner-blob{position:absolute;top:40%;left:30%;width:200px;height:200px;background:radial-gradient(circle,rgba(167,139,250,.4),transparent 65%);border-radius:50%;filter:blur(30px);pointer-events:none;animation:floatBlob 16s ease-in-out infinite 2s}
 .contact-info h3{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px;position:relative}
-.contact-info>p{color:rgba(255,255,255,.7);margin-bottom:36px;position:relative;font-size:.95rem}
+.contact-info>h3,.contact-info>p{position:relative;z-index:1}
+.contact-info>p{color:rgba(255,255,255,.82);margin-bottom:36px;font-size:.95rem}
 .contact-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:24px;position:relative}
 .contact-item-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;color:#fff;border:1px solid transparent}
 .contact-item:nth-of-type(1) .contact-item-icon{background:linear-gradient(135deg,#3b82f6,#06b6d4);box-shadow:0 6px 16px rgba(59,130,246,.35)}
@@ -609,6 +612,7 @@ footer{background:var(--bg-dark);color:rgba(255,255,255,.7);padding:60px 6% 30px
     </div>
     <div class="contact-wrapper reveal">
       <div class="contact-info">
+        <div class="contact-inner-blob"></div>
         <h3>Contact information</h3>
         <p>Reach out through any of the channels below or use the form.</p>
         <div class="contact-item">
