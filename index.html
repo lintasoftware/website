@@ -387,120 +387,108 @@
   }
 
   .about-visual {
-    background: linear-gradient(135deg, #0a365c 0%, #0f4c81 45%, #0096c7 100%);
-    border-radius: 24px;
-    padding: 32px;
+    background: linear-gradient(135deg, #0a365c 0%, #0f4c81 50%, #0096c7 100%);
+    border-radius: 20px;
+    padding: 44px 40px;
     color: #fff;
     min-height: 420px;
     box-shadow: var(--shadow-hover);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .about-visual::before {
     content: '';
     position: absolute;
-    top: -120px; right: -120px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(0,180,216,0.45) 0%, transparent 65%);
+    top: -100px; right: -100px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(0,180,216,0.35) 0%, transparent 65%);
     border-radius: 50%;
   }
 
   .about-visual::after {
     content: '';
     position: absolute;
-    bottom: -100px; left: -80px;
-    width: 260px; height: 260px;
-    background: radial-gradient(circle, rgba(127,240,255,0.25) 0%, transparent 65%);
+    bottom: -80px; left: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(127,240,255,0.18) 0%, transparent 65%);
     border-radius: 50%;
   }
 
-  .bento-grid {
+  .about-visual-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    align-self: flex-start;
+  }
+
+  .about-visual h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-visual > p.visual-sub {
+    font-size: 0.98rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .visual-strengths {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .strength-item {
+    display: flex;
     gap: 14px;
-    height: 100%;
-    align-content: center;
+    align-items: flex-start;
   }
 
-  .tech-card {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 18px;
-    padding: 20px;
-    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-  }
-
-  .tech-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(127,240,255,0.4);
-  }
-
-  .tech-card.wide {
-    grid-column: span 2;
-  }
-
-  .tech-card-title {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #7ff0ff;
-    margin-bottom: 12px;
+  .strength-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 8px;
-  }
-
-  .tech-card-title .tc-icon {
-    font-size: 0.95rem;
-  }
-
-  .tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tech-tag {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.18);
-    color: #fff;
-    padding: 5px 11px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 500;
-    transition: all 0.25s ease;
-    cursor: default;
-  }
-
-  .tech-tag:hover {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,180,216,0.35);
-  }
-
-  .tech-feature-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 8px;
-    font-size: 0.85rem;
-    opacity: 0.92;
-  }
-
-  .tech-feature-row .tc-dot {
-    width: 8px; height: 8px;
-    background: linear-gradient(135deg, #7ff0ff, var(--accent));
-    border-radius: 50%;
+    justify-content: center;
+    font-size: 1.2rem;
     flex-shrink: 0;
-    box-shadow: 0 0 8px rgba(127,240,255,0.6);
+  }
+
+  .strength-item h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .strength-item p {
+    font-size: 0.85rem;
+    opacity: 0.82;
+    line-height: 1.45;
   }
 
   .about-text h3 {
@@ -1253,8 +1241,6 @@
 
     .contact-info { padding: 40px 30px; }
     .contact-form { padding: 40px 30px; }
-    .bento-grid { grid-template-columns: 1fr 1fr; }
-    .bento-card.wide { grid-column: span 2; }
   }
 
   @media (max-width: 768px) {
@@ -1284,9 +1270,7 @@
 
     .form-row { grid-template-columns: 1fr; }
     .about-features { grid-template-columns: 1fr; }
-    .about-visual { padding: 24px; min-height: auto; }
-    .bento-grid { grid-template-columns: 1fr; }
-    .tech-card.wide { grid-column: span 1; }
+    .about-visual { padding: 32px 28px; min-height: auto; }
   }
 </style>
 </head>
@@ -1336,65 +1320,31 @@
 
   <div class="about-grid">
     <div class="about-visual reveal reveal-left">
-      <div class="bento-grid">
-        <div class="tech-card wide">
-          <div class="tech-card-title"><span class="tc-icon">⚛️</span> Frontend</div>
-          <div class="tech-tags">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Next.js</span>
-            <span class="tech-tag">Angular</span>
-            <span class="tech-tag">Vue.js</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">Tailwind CSS</span>
+      <span class="about-visual-tag">Why Lintasoft</span>
+      <h3>Engineering that delivers business outcomes</h3>
+      <p class="visual-sub">We combine design thinking, modern engineering, and disciplined delivery to build software that performs — and lasts.</p>
+
+      <div class="visual-strengths">
+        <div class="strength-item">
+          <div class="strength-icon">🧩</div>
+          <div>
+            <h4>Full-Stack Capability</h4>
+            <p>Web, mobile, cloud and APIs — delivered by one accountable team.</p>
           </div>
         </div>
-
-        <div class="tech-card">
-          <div class="tech-card-title"><span class="tc-icon">⚙️</span> Backend</div>
-          <div class="tech-tags">
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">.NET</span>
-            <span class="tech-tag">Java</span>
-            <span class="tech-tag">PHP</span>
+        <div class="strength-item">
+          <div class="strength-icon">⚡</div>
+          <div>
+            <h4>Agile Delivery</h4>
+            <p>Two-week sprints, working demos, and complete transparency.</p>
           </div>
         </div>
-
-        <div class="tech-card">
-          <div class="tech-card-title"><span class="tc-icon">📱</span> Mobile</div>
-          <div class="tech-tags">
-            <span class="tech-tag">Flutter</span>
-            <span class="tech-tag">React Native</span>
-            <span class="tech-tag">Kotlin</span>
-            <span class="tech-tag">Swift</span>
+        <div class="strength-item">
+          <div class="strength-icon">🔒</div>
+          <div>
+            <h4>Security-First</h4>
+            <p>Secure SDLC, testing, and compliance baked into every release.</p>
           </div>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-card-title"><span class="tc-icon">☁️</span> Cloud &amp; DevOps</div>
-          <div class="tech-tags">
-            <span class="tech-tag">AWS</span>
-            <span class="tech-tag">Azure</span>
-            <span class="tech-tag">GCP</span>
-            <span class="tech-tag">Docker</span>
-            <span class="tech-tag">Kubernetes</span>
-          </div>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-card-title"><span class="tc-icon">🗄️</span> Database</div>
-          <div class="tech-tags">
-            <span class="tech-tag">PostgreSQL</span>
-            <span class="tech-tag">MySQL</span>
-            <span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">Redis</span>
-          </div>
-        </div>
-
-        <div class="tech-card wide">
-          <div class="tech-card-title"><span class="tc-icon">🚀</span> Engineering Practices</div>
-          <div class="tech-feature-row"><span class="tc-dot"></span> Agile / Scrum delivery · CI/CD pipelines · Microservices architecture</div>
-          <div class="tech-feature-row"><span class="tc-dot"></span> REST &amp; GraphQL APIs · Test automation · Code reviews</div>
         </div>
       </div>
     </div>
