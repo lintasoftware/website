@@ -289,9 +289,10 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 14px;
     height: 100%;
+    align-content: center;
   }
 
   .bento-card {
@@ -1021,6 +1022,8 @@
 
     .contact-info { padding: 40px 30px; }
     .contact-form { padding: 40px 30px; }
+    .bento-grid { grid-template-columns: 1fr 1fr; }
+    .bento-card.wide { grid-column: span 2; }
   }
 
   @media (max-width: 768px) {
@@ -1096,12 +1099,6 @@
   <div class="about-grid">
     <div class="about-visual">
       <div class="bento-grid">
-        <div class="bento-card wide">
-          <div class="bento-icon">📍</div>
-          <div class="bento-title">Kochi HQ</div>
-          <div class="bento-label">Headquartered in Kakkanad — the heart of Kerala's IT corridor, next to Infopark.</div>
-        </div>
-
         <div class="bento-card">
           <div class="bento-icon">🧩</div>
           <div class="bento-title">Full-Stack</div>
